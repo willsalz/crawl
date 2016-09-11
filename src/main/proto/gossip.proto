@@ -1,0 +1,27 @@
+package co.willsalz.swim;
+
+// How to generate
+// ===============
+// $ cd example
+// $ protoc src/main/proto/gossip.proto --java_out=src/main/java
+
+option optimize_for = SPEED;
+
+message Message {
+    enum Type {
+        PING = 1;
+        ACK = 2;
+    }
+
+    required Type type = 1;
+    optional Ping ping = 2;
+    optional Ack ack = 3;
+}
+
+message Ping {
+
+}
+
+message Ack {
+
+}
