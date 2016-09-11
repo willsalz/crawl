@@ -13,13 +13,18 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.DatagramChannel;
 import io.netty.channel.socket.DatagramPacket;
 import io.netty.channel.socket.nio.NioDatagramChannel;
+import io.netty.handler.logging.LoggingHandler;
 import io.netty.util.CharsetUtil;
+import io.netty.util.internal.logging.InternalLoggerFactory;
+import io.netty.util.internal.logging.Slf4JLoggerFactory;
 
 public final class GossipClient {
 
     static final int PORT = Integer.parseInt(System.getProperty("port", "7686"));
 
     public static void main(String[] args) throws Exception {
+
+        InternalLoggerFactory.setDefaultFactory(Slf4JLoggerFactory.INSTANCE);
 
         EventLoopGroup group = new NioEventLoopGroup();
         try {
@@ -31,15 +36,19 @@ public final class GossipClient {
                 .handler(new ChannelInitializer<DatagramChannel>() {
                     @Override
                     protected void initChannel(DatagramChannel ch) throws Exception {
-                        ch.pipeline().addLast(new GossipClientHandler());
+                        ch.pipeline().addLast("loggingHandler", new LoggingHandler());
+                        ch.pipeline().addLast("clientHandler", new GossipClientHandler());
                     }
                 });
 
             Channel ch = b.bind(0).sync().channel();
 
-            ch.writeAndFlush(new DatagramPacket(
-                Unpooled.copiedBuffer("QOTM?", CharsetUtil.UTF_8),
-                new InetSocketAddress("255.255.255.255", PORT))).sync();
+            ch.writeAndFlush(
+                new DatagramPacket(
+                    Unpooled.copiedBuffer("QOTM?", CharsetUtil.UTF_8),
+                    new InetSocketAddress("255.255.255.255", PORT)
+                )
+            ).sync();
 
             if (!ch.closeFuture().await(5000)) {
                 System.err.println("QOTM request timed out.");

@@ -1,7 +1,6 @@
 package swim;
 
 option java_package = "co.willsalz.swim.generated";
-option java_outer_classname = "Gossip";
 option optimize_for = LITE_RUNTIME;
 
 message Message {
