@@ -22,4 +22,3 @@ public class GossipClientHandler extends SimpleChannelInboundHandler<DatagramPac
         ctx.close();
     }
 }
-

@@ -1,5 +1,7 @@
 package co.willsalz.swim.server;
 
+import java.util.Random;
+
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -8,12 +10,30 @@ import io.netty.util.CharsetUtil;
 
 public class GossipServerHandler extends SimpleChannelInboundHandler<DatagramPacket> {
 
+    private static final Random random = new Random();
+
+    // Quotes from Mohandas K. Gandhi:
+    private static final String[] quotes = {
+        "Where there is love there is life.",
+        "First they ignore you, then they laugh at you, then they fight you, then you win.",
+        "Be the change you want to see in the world.",
+        "The weak can never forgive. Forgiveness is the attribute of the strong.",
+    };
+
+    private static String nextQuote() {
+        int quoteId;
+        synchronized (random) {
+            quoteId = random.nextInt(quotes.length);
+        }
+        return quotes[quoteId];
+    }
+
     @Override
     public void channelRead0(ChannelHandlerContext ctx, DatagramPacket packet) throws Exception {
         System.err.println(packet);
         if ("QOTM?".equals(packet.content().toString(CharsetUtil.UTF_8))) {
             ctx.write(new DatagramPacket(
-                Unpooled.copiedBuffer("QOTM: " + "foo", CharsetUtil.UTF_8), packet.sender()));
+                Unpooled.copiedBuffer("QOTM: " + nextQuote(), CharsetUtil.UTF_8), packet.sender()));
         }
     }
 
@@ -28,4 +48,3 @@ public class GossipServerHandler extends SimpleChannelInboundHandler<DatagramPac
         // We don't close the channel because we can keep serving requests.
     }
 }
-

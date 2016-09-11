@@ -1,11 +1,8 @@
-package co.willsalz.swim;
+package swim;
 
-// How to generate
-// ===============
-// $ cd example
-// $ protoc src/main/proto/gossip.proto --java_out=src/main/java
-
-option optimize_for = SPEED;
+option java_package = "co.willsalz.swim.generated";
+option java_outer_classname = "Gossip";
+option optimize_for = LITE_RUNTIME;
 
 message Message {
     enum Type {
@@ -16,6 +13,12 @@ message Message {
     required Type type = 1;
     optional Ping ping = 2;
     optional Ack ack = 3;
+
+    message Peer {
+        required string host = 1;
+        required int32 port = 2;
+    }
+
 }
 
 message Ping {
@@ -25,3 +28,4 @@ message Ping {
 message Ack {
 
 }
+
