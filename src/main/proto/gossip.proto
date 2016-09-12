@@ -1,7 +1,8 @@
 package swim;
 
 option java_package = "co.willsalz.swim.generated";
-option optimize_for = LITE_RUNTIME;
+option java_outer_classname = "Gossip";
+option optimize_for = SPEED;
 
 message Message {
     enum Type {

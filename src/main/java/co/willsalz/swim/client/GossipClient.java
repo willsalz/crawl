@@ -45,7 +45,7 @@ public final class GossipClient {
 
             ch.writeAndFlush(
                 new DatagramPacket(
-                    Unpooled.copiedBuffer("QOTM?", CharsetUtil.UTF_8),
+                    Unpooled.copiedBuffer("Ping", CharsetUtil.UTF_8),
                     new InetSocketAddress("255.255.255.255", PORT)
                 )
             ).sync();

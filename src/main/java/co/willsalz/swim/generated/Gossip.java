@@ -6,11 +6,11 @@ package co.willsalz.swim.generated;
 public final class Gossip {
   private Gossip() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+      com.google.protobuf.ExtensionRegistry registry) {
   }
   public interface MessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:swim.Message)
-      com.google.protobuf.MessageLiteOrBuilder {
+      com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>required .swim.Message.Type type = 1;</code>
@@ -29,6 +29,10 @@ public final class Gossip {
      * <code>optional .swim.Ping ping = 2;</code>
      */
     co.willsalz.swim.generated.Gossip.Ping getPing();
+    /**
+     * <code>optional .swim.Ping ping = 2;</code>
+     */
+    co.willsalz.swim.generated.Gossip.PingOrBuilder getPingOrBuilder();
 
     /**
      * <code>optional .swim.Ack ack = 3;</code>
@@ -38,31 +42,152 @@ public final class Gossip {
      * <code>optional .swim.Ack ack = 3;</code>
      */
     co.willsalz.swim.generated.Gossip.Ack getAck();
+    /**
+     * <code>optional .swim.Ack ack = 3;</code>
+     */
+    co.willsalz.swim.generated.Gossip.AckOrBuilder getAckOrBuilder();
   }
   /**
    * Protobuf type {@code swim.Message}
    */
-  public  static final class Message extends
-      com.google.protobuf.GeneratedMessageLite<
-          Message, Message.Builder> implements
+  public static final class Message extends
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:swim.Message)
       MessageOrBuilder {
-    private Message() {
-      type_ = 1;
+    // Use Message.newBuilder() to construct.
+    private Message(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
+    private Message(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Message defaultInstance;
+    public static Message getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public Message getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Message(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              int rawValue = input.readEnum();
+              co.willsalz.swim.generated.Gossip.Message.Type value = co.willsalz.swim.generated.Gossip.Message.Type.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                type_ = value;
+              }
+              break;
+            }
+            case 18: {
+              co.willsalz.swim.generated.Gossip.Ping.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = ping_.toBuilder();
+              }
+              ping_ = input.readMessage(co.willsalz.swim.generated.Gossip.Ping.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ping_);
+                ping_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              co.willsalz.swim.generated.Gossip.Ack.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = ack_.toBuilder();
+              }
+              ack_ = input.readMessage(co.willsalz.swim.generated.Gossip.Ack.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ack_);
+                ack_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              co.willsalz.swim.generated.Gossip.Message.class, co.willsalz.swim.generated.Gossip.Message.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Message> PARSER =
+        new com.google.protobuf.AbstractParser<Message>() {
+      public Message parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Message(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Message> getParserForType() {
+      return PARSER;
+    }
+
     /**
      * Protobuf enum {@code swim.Message.Type}
      */
     public enum Type
-        implements com.google.protobuf.Internal.EnumLite {
+        implements com.google.protobuf.ProtocolMessageEnum {
       /**
        * <code>PING = 1;</code>
        */
-      PING(1),
+      PING(0, 1),
       /**
        * <code>ACK = 2;</code>
        */
-      ACK(2),
+      ACK(1, 2),
       ;
 
       /**
@@ -75,19 +200,9 @@ public final class Gossip {
       public static final int ACK_VALUE = 2;
 
 
-      public final int getNumber() {
-        return value;
-      }
+      public final int getNumber() { return value; }
 
-      /**
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
       public static Type valueOf(int value) {
-        return forNumber(value);
-      }
-
-      public static Type forNumber(int value) {
         switch (value) {
           case 1: return PING;
           case 2: return ACK;
@@ -99,17 +214,43 @@ public final class Gossip {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          Type> internalValueMap =
+      private static com.google.protobuf.Internal.EnumLiteMap<Type>
+          internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<Type>() {
               public Type findValueByNumber(int number) {
-                return Type.forNumber(number);
+                return Type.valueOf(number);
               }
             };
 
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return co.willsalz.swim.generated.Gossip.Message.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final Type[] VALUES = values();
+
+      public static Type valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
       private final int value;
 
-      private Type(int value) {
+      private Type(int index, int value) {
+        this.index = index;
         this.value = value;
       }
 
@@ -118,7 +259,7 @@ public final class Gossip {
 
     public interface PeerOrBuilder extends
         // @@protoc_insertion_point(interface_extends:swim.Message.Peer)
-        com.google.protobuf.MessageLiteOrBuilder {
+        com.google.protobuf.MessageOrBuilder {
 
       /**
        * <code>required string host = 1;</code>
@@ -146,17 +287,108 @@ public final class Gossip {
     /**
      * Protobuf type {@code swim.Message.Peer}
      */
-    public  static final class Peer extends
-        com.google.protobuf.GeneratedMessageLite<
-            Peer, Peer.Builder> implements
+    public static final class Peer extends
+        com.google.protobuf.GeneratedMessage implements
         // @@protoc_insertion_point(message_implements:swim.Message.Peer)
         PeerOrBuilder {
-      private Peer() {
-        host_ = "";
+      // Use Peer.newBuilder() to construct.
+      private Peer(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+        this.unknownFields = builder.getUnknownFields();
       }
+      private Peer(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+      private static final Peer defaultInstance;
+      public static Peer getDefaultInstance() {
+        return defaultInstance;
+      }
+
+      public Peer getDefaultInstanceForType() {
+        return defaultInstance;
+      }
+
+      private final com.google.protobuf.UnknownFieldSet unknownFields;
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+          getUnknownFields() {
+        return this.unknownFields;
+      }
+      private Peer(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        initFields();
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!parseUnknownField(input, unknownFields,
+                                       extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+              case 10: {
+                com.google.protobuf.ByteString bs = input.readBytes();
+                bitField0_ |= 0x00000001;
+                host_ = bs;
+                break;
+              }
+              case 16: {
+                bitField0_ |= 0x00000002;
+                port_ = input.readInt32();
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_Peer_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_Peer_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                co.willsalz.swim.generated.Gossip.Message.Peer.class, co.willsalz.swim.generated.Gossip.Message.Peer.Builder.class);
+      }
+
+      public static com.google.protobuf.Parser<Peer> PARSER =
+          new com.google.protobuf.AbstractParser<Peer>() {
+        public Peer parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Peer(input, extensionRegistry);
+        }
+      };
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<Peer> getParserForType() {
+        return PARSER;
+      }
+
       private int bitField0_;
       public static final int HOST_FIELD_NUMBER = 1;
-      private java.lang.String host_;
+      private java.lang.Object host_;
       /**
        * <code>required string host = 1;</code>
        */
@@ -167,43 +399,34 @@ public final class Gossip {
        * <code>required string host = 1;</code>
        */
       public java.lang.String getHost() {
-        return host_;
+        java.lang.Object ref = host_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            host_ = s;
+          }
+          return s;
+        }
       }
       /**
        * <code>required string host = 1;</code>
        */
       public com.google.protobuf.ByteString
           getHostBytes() {
-        return com.google.protobuf.ByteString.copyFromUtf8(host_);
-      }
-      /**
-       * <code>required string host = 1;</code>
-       */
-      private void setHost(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        host_ = value;
-      }
-      /**
-       * <code>required string host = 1;</code>
-       */
-      private void clearHost() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        host_ = getDefaultInstance().getHost();
-      }
-      /**
-       * <code>required string host = 1;</code>
-       */
-      private void setHostBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        host_ = value.toStringUtf8();
+        java.lang.Object ref = host_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          host_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
       }
 
       public static final int PORT_FIELD_NUMBER = 2;
@@ -220,32 +443,42 @@ public final class Gossip {
       public int getPort() {
         return port_;
       }
-      /**
-       * <code>required int32 port = 2;</code>
-       */
-      private void setPort(int value) {
-        bitField0_ |= 0x00000002;
-        port_ = value;
-      }
-      /**
-       * <code>required int32 port = 2;</code>
-       */
-      private void clearPort() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+
+      private void initFields() {
+        host_ = "";
         port_ = 0;
+      }
+      private byte memoizedIsInitialized = -1;
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        if (!hasHost()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasPort()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        memoizedIsInitialized = 1;
+        return true;
       }
 
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
+        getSerializedSize();
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeString(1, getHost());
+          output.writeBytes(1, getHostBytes());
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           output.writeInt32(2, port_);
         }
-        unknownFields.writeTo(output);
+        getUnknownFields().writeTo(output);
       }
 
+      private int memoizedSerializedSize = -1;
       public int getSerializedSize() {
         int size = memoizedSerializedSize;
         if (size != -1) return size;
@@ -253,133 +486,288 @@ public final class Gossip {
         size = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeStringSize(1, getHost());
+            .computeBytesSize(1, getHostBytes());
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           size += com.google.protobuf.CodedOutputStream
             .computeInt32Size(2, port_);
         }
-        size += unknownFields.getSerializedSize();
+        size += getUnknownFields().getSerializedSize();
         memoizedSerializedSize = size;
         return size;
+      }
+
+      private static final long serialVersionUID = 0L;
+      @java.lang.Override
+      protected java.lang.Object writeReplace()
+          throws java.io.ObjectStreamException {
+        return super.writeReplace();
       }
 
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, data);
+        return PARSER.parseFrom(data);
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, data, extensionRegistry);
+        return PARSER.parseFrom(data, extensionRegistry);
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, data);
+        return PARSER.parseFrom(data);
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, data, extensionRegistry);
+        return PARSER.parseFrom(data, extensionRegistry);
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, input);
+        return PARSER.parseFrom(input);
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, input, extensionRegistry);
+        return PARSER.parseFrom(input, extensionRegistry);
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+        return PARSER.parseDelimitedFrom(input);
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+        return PARSER.parseDelimitedFrom(input, extensionRegistry);
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, input);
+        return PARSER.parseFrom(input);
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageLite.parseFrom(
-            DEFAULT_INSTANCE, input, extensionRegistry);
+        return PARSER.parseFrom(input, extensionRegistry);
       }
 
-      public static Builder newBuilder() {
-        return DEFAULT_INSTANCE.toBuilder();
-      }
+      public static Builder newBuilder() { return Builder.create(); }
+      public Builder newBuilderForType() { return newBuilder(); }
       public static Builder newBuilder(co.willsalz.swim.generated.Gossip.Message.Peer prototype) {
-        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        return newBuilder().mergeFrom(prototype);
       }
+      public Builder toBuilder() { return newBuilder(this); }
 
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
       /**
        * Protobuf type {@code swim.Message.Peer}
        */
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessageLite.Builder<
-            co.willsalz.swim.generated.Gossip.Message.Peer, Builder> implements
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
           // @@protoc_insertion_point(builder_implements:swim.Message.Peer)
           co.willsalz.swim.generated.Gossip.Message.PeerOrBuilder {
-        // Construct using co.willsalz.swim.generated.Gossip.Message.Peer.newBuilder()
-        private Builder() {
-          super(DEFAULT_INSTANCE);
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_Peer_descriptor;
         }
 
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_Peer_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  co.willsalz.swim.generated.Gossip.Message.Peer.class, co.willsalz.swim.generated.Gossip.Message.Peer.Builder.class);
+        }
 
+        // Construct using co.willsalz.swim.generated.Gossip.Message.Peer.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          }
+        }
+        private static Builder create() {
+          return new Builder();
+        }
+
+        public Builder clear() {
+          super.clear();
+          host_ = "";
+          bitField0_ = (bitField0_ & ~0x00000001);
+          port_ = 0;
+          bitField0_ = (bitField0_ & ~0x00000002);
+          return this;
+        }
+
+        public Builder clone() {
+          return create().mergeFrom(buildPartial());
+        }
+
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_Peer_descriptor;
+        }
+
+        public co.willsalz.swim.generated.Gossip.Message.Peer getDefaultInstanceForType() {
+          return co.willsalz.swim.generated.Gossip.Message.Peer.getDefaultInstance();
+        }
+
+        public co.willsalz.swim.generated.Gossip.Message.Peer build() {
+          co.willsalz.swim.generated.Gossip.Message.Peer result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        public co.willsalz.swim.generated.Gossip.Message.Peer buildPartial() {
+          co.willsalz.swim.generated.Gossip.Message.Peer result = new co.willsalz.swim.generated.Gossip.Message.Peer(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+            to_bitField0_ |= 0x00000001;
+          }
+          result.host_ = host_;
+          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          result.port_ = port_;
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
+        }
+
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof co.willsalz.swim.generated.Gossip.Message.Peer) {
+            return mergeFrom((co.willsalz.swim.generated.Gossip.Message.Peer)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(co.willsalz.swim.generated.Gossip.Message.Peer other) {
+          if (other == co.willsalz.swim.generated.Gossip.Message.Peer.getDefaultInstance()) return this;
+          if (other.hasHost()) {
+            bitField0_ |= 0x00000001;
+            host_ = other.host_;
+            onChanged();
+          }
+          if (other.hasPort()) {
+            setPort(other.getPort());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          return this;
+        }
+
+        public final boolean isInitialized() {
+          if (!hasHost()) {
+            
+            return false;
+          }
+          if (!hasPort()) {
+            
+            return false;
+          }
+          return true;
+        }
+
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          co.willsalz.swim.generated.Gossip.Message.Peer parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (co.willsalz.swim.generated.Gossip.Message.Peer) e.getUnfinishedMessage();
+            throw e;
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int bitField0_;
+
+        private java.lang.Object host_ = "";
         /**
          * <code>required string host = 1;</code>
          */
         public boolean hasHost() {
-          return instance.hasHost();
+          return ((bitField0_ & 0x00000001) == 0x00000001);
         }
         /**
          * <code>required string host = 1;</code>
          */
         public java.lang.String getHost() {
-          return instance.getHost();
+          java.lang.Object ref = host_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              host_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
         }
         /**
          * <code>required string host = 1;</code>
          */
         public com.google.protobuf.ByteString
             getHostBytes() {
-          return instance.getHostBytes();
+          java.lang.Object ref = host_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            host_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
         }
         /**
          * <code>required string host = 1;</code>
          */
         public Builder setHost(
             java.lang.String value) {
-          copyOnWrite();
-          instance.setHost(value);
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+          host_ = value;
+          onChanged();
           return this;
         }
         /**
          * <code>required string host = 1;</code>
          */
         public Builder clearHost() {
-          copyOnWrite();
-          instance.clearHost();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          host_ = getDefaultInstance().getHost();
+          onChanged();
           return this;
         }
         /**
@@ -387,172 +775,61 @@ public final class Gossip {
          */
         public Builder setHostBytes(
             com.google.protobuf.ByteString value) {
-          copyOnWrite();
-          instance.setHostBytes(value);
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+          host_ = value;
+          onChanged();
           return this;
         }
 
+        private int port_ ;
         /**
          * <code>required int32 port = 2;</code>
          */
         public boolean hasPort() {
-          return instance.hasPort();
+          return ((bitField0_ & 0x00000002) == 0x00000002);
         }
         /**
          * <code>required int32 port = 2;</code>
          */
         public int getPort() {
-          return instance.getPort();
+          return port_;
         }
         /**
          * <code>required int32 port = 2;</code>
          */
         public Builder setPort(int value) {
-          copyOnWrite();
-          instance.setPort(value);
+          bitField0_ |= 0x00000002;
+          port_ = value;
+          onChanged();
           return this;
         }
         /**
          * <code>required int32 port = 2;</code>
          */
         public Builder clearPort() {
-          copyOnWrite();
-          instance.clearPort();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          port_ = 0;
+          onChanged();
           return this;
         }
 
         // @@protoc_insertion_point(builder_scope:swim.Message.Peer)
       }
-      private byte memoizedIsInitialized = -1;
-      protected final Object dynamicMethod(
-          com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
-          Object arg0, Object arg1) {
-        switch (method) {
-          case NEW_MUTABLE_INSTANCE: {
-            return new co.willsalz.swim.generated.Gossip.Message.Peer();
-          }
-          case IS_INITIALIZED: {
-            byte isInitialized = memoizedIsInitialized;
-            if (isInitialized == 1) return DEFAULT_INSTANCE;
-            if (isInitialized == 0) return null;
 
-            boolean shouldMemoize = ((Boolean) arg0).booleanValue();
-            if (!hasHost()) {
-              if (shouldMemoize) {
-                memoizedIsInitialized = 0;
-              }
-              return null;
-            }
-            if (!hasPort()) {
-              if (shouldMemoize) {
-                memoizedIsInitialized = 0;
-              }
-              return null;
-            }
-            if (shouldMemoize) memoizedIsInitialized = 1;
-            return DEFAULT_INSTANCE;
-
-          }
-          case MAKE_IMMUTABLE: {
-            return null;
-          }
-          case NEW_BUILDER: {
-            return new Builder();
-          }
-          case VISIT: {
-            Visitor visitor = (Visitor) arg0;
-            co.willsalz.swim.generated.Gossip.Message.Peer other = (co.willsalz.swim.generated.Gossip.Message.Peer) arg1;
-            host_ = visitor.visitString(
-                hasHost(), host_,
-                other.hasHost(), other.host_);
-            port_ = visitor.visitInt(
-                hasPort(), port_,
-                other.hasPort(), other.port_);
-            if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
-                .INSTANCE) {
-              bitField0_ |= other.bitField0_;
-            }
-            return this;
-          }
-          case MERGE_FROM_STREAM: {
-            com.google.protobuf.CodedInputStream input =
-                (com.google.protobuf.CodedInputStream) arg0;
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry =
-                (com.google.protobuf.ExtensionRegistryLite) arg1;
-            try {
-              boolean done = false;
-              while (!done) {
-                int tag = input.readTag();
-                switch (tag) {
-                  case 0:
-                    done = true;
-                    break;
-                  default: {
-                    if (!parseUnknownField(tag, input)) {
-                      done = true;
-                    }
-                    break;
-                  }
-                  case 10: {
-                    String s = input.readString();
-                    bitField0_ |= 0x00000001;
-                    host_ = s;
-                    break;
-                  }
-                  case 16: {
-                    bitField0_ |= 0x00000002;
-                    port_ = input.readInt32();
-                    break;
-                  }
-                }
-              }
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              throw new RuntimeException(e.setUnfinishedMessage(this));
-            } catch (java.io.IOException e) {
-              throw new RuntimeException(
-                  new com.google.protobuf.InvalidProtocolBufferException(
-                      e.getMessage()).setUnfinishedMessage(this));
-            } finally {
-            }
-          }
-          case GET_DEFAULT_INSTANCE: {
-            return DEFAULT_INSTANCE;
-          }
-          case GET_PARSER: {
-            if (PARSER == null) {    synchronized (co.willsalz.swim.generated.Gossip.Message.Peer.class) {
-                if (PARSER == null) {
-                  PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
-                }
-              }
-            }
-            return PARSER;
-          }
-        }
-        throw new UnsupportedOperationException();
+      static {
+        defaultInstance = new Peer(true);
+        defaultInstance.initFields();
       }
-
 
       // @@protoc_insertion_point(class_scope:swim.Message.Peer)
-      private static final co.willsalz.swim.generated.Gossip.Message.Peer DEFAULT_INSTANCE;
-      static {
-        DEFAULT_INSTANCE = new Peer();
-        DEFAULT_INSTANCE.makeImmutable();
-      }
-
-      public static co.willsalz.swim.generated.Gossip.Message.Peer getDefaultInstance() {
-        return DEFAULT_INSTANCE;
-      }
-
-      private static volatile com.google.protobuf.Parser<Peer> PARSER;
-
-      public static com.google.protobuf.Parser<Peer> parser() {
-        return DEFAULT_INSTANCE.getParserForType();
-      }
     }
 
     private int bitField0_;
     public static final int TYPE_FIELD_NUMBER = 1;
-    private int type_;
+    private co.willsalz.swim.generated.Gossip.Message.Type type_;
     /**
      * <code>required .swim.Message.Type type = 1;</code>
      */
@@ -563,25 +840,7 @@ public final class Gossip {
      * <code>required .swim.Message.Type type = 1;</code>
      */
     public co.willsalz.swim.generated.Gossip.Message.Type getType() {
-      co.willsalz.swim.generated.Gossip.Message.Type result = co.willsalz.swim.generated.Gossip.Message.Type.forNumber(type_);
-      return result == null ? co.willsalz.swim.generated.Gossip.Message.Type.PING : result;
-    }
-    /**
-     * <code>required .swim.Message.Type type = 1;</code>
-     */
-    private void setType(co.willsalz.swim.generated.Gossip.Message.Type value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      bitField0_ |= 0x00000001;
-      type_ = value.getNumber();
-    }
-    /**
-     * <code>required .swim.Message.Type type = 1;</code>
-     */
-    private void clearType() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      type_ = 1;
+      return type_;
     }
 
     public static final int PING_FIELD_NUMBER = 2;
@@ -596,44 +855,13 @@ public final class Gossip {
      * <code>optional .swim.Ping ping = 2;</code>
      */
     public co.willsalz.swim.generated.Gossip.Ping getPing() {
-      return ping_ == null ? co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance() : ping_;
+      return ping_;
     }
     /**
      * <code>optional .swim.Ping ping = 2;</code>
      */
-    private void setPing(co.willsalz.swim.generated.Gossip.Ping value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ping_ = value;
-      bitField0_ |= 0x00000002;
-      }
-    /**
-     * <code>optional .swim.Ping ping = 2;</code>
-     */
-    private void setPing(
-        co.willsalz.swim.generated.Gossip.Ping.Builder builderForValue) {
-      ping_ = builderForValue.build();
-      bitField0_ |= 0x00000002;
-    }
-    /**
-     * <code>optional .swim.Ping ping = 2;</code>
-     */
-    private void mergePing(co.willsalz.swim.generated.Gossip.Ping value) {
-      if (ping_ != null &&
-          ping_ != co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance()) {
-        ping_ =
-          co.willsalz.swim.generated.Gossip.Ping.newBuilder(ping_).mergeFrom(value).buildPartial();
-      } else {
-        ping_ = value;
-      }
-      bitField0_ |= 0x00000002;
-    }
-    /**
-     * <code>optional .swim.Ping ping = 2;</code>
-     */
-    private void clearPing() {  ping_ = null;
-      bitField0_ = (bitField0_ & ~0x00000002);
+    public co.willsalz.swim.generated.Gossip.PingOrBuilder getPingOrBuilder() {
+      return ping_;
     }
 
     public static final int ACK_FIELD_NUMBER = 3;
@@ -648,60 +876,50 @@ public final class Gossip {
      * <code>optional .swim.Ack ack = 3;</code>
      */
     public co.willsalz.swim.generated.Gossip.Ack getAck() {
-      return ack_ == null ? co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance() : ack_;
+      return ack_;
     }
     /**
      * <code>optional .swim.Ack ack = 3;</code>
      */
-    private void setAck(co.willsalz.swim.generated.Gossip.Ack value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      ack_ = value;
-      bitField0_ |= 0x00000004;
-      }
-    /**
-     * <code>optional .swim.Ack ack = 3;</code>
-     */
-    private void setAck(
-        co.willsalz.swim.generated.Gossip.Ack.Builder builderForValue) {
-      ack_ = builderForValue.build();
-      bitField0_ |= 0x00000004;
+    public co.willsalz.swim.generated.Gossip.AckOrBuilder getAckOrBuilder() {
+      return ack_;
     }
-    /**
-     * <code>optional .swim.Ack ack = 3;</code>
-     */
-    private void mergeAck(co.willsalz.swim.generated.Gossip.Ack value) {
-      if (ack_ != null &&
-          ack_ != co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance()) {
-        ack_ =
-          co.willsalz.swim.generated.Gossip.Ack.newBuilder(ack_).mergeFrom(value).buildPartial();
-      } else {
-        ack_ = value;
-      }
-      bitField0_ |= 0x00000004;
+
+    private void initFields() {
+      type_ = co.willsalz.swim.generated.Gossip.Message.Type.PING;
+      ping_ = co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance();
+      ack_ = co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance();
     }
-    /**
-     * <code>optional .swim.Ack ack = 3;</code>
-     */
-    private void clearAck() {  ack_ = null;
-      bitField0_ = (bitField0_ & ~0x00000004);
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
     }
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, type_);
+        output.writeEnum(1, type_.getNumber());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, getPing());
+        output.writeMessage(2, ping_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, getAck());
+        output.writeMessage(3, ack_);
       }
-      unknownFields.writeTo(output);
+      getUnknownFields().writeTo(output);
     }
 
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
@@ -709,775 +927,1230 @@ public final class Gossip {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, type_);
+          .computeEnumSize(1, type_.getNumber());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getPing());
+          .computeMessageSize(2, ping_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getAck());
+          .computeMessageSize(3, ack_);
       }
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
     public static co.willsalz.swim.generated.Gossip.Message parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data);
+      return PARSER.parseFrom(data);
     }
     public static co.willsalz.swim.generated.Gossip.Message parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Message parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data);
+      return PARSER.parseFrom(data);
     }
     public static co.willsalz.swim.generated.Gossip.Message parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Message parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input);
+      return PARSER.parseFrom(input);
     }
     public static co.willsalz.swim.generated.Gossip.Message parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Message parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static co.willsalz.swim.generated.Gossip.Message parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Message parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input);
+      return PARSER.parseFrom(input);
     }
     public static co.willsalz.swim.generated.Gossip.Message parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(co.willsalz.swim.generated.Gossip.Message prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
+    public Builder toBuilder() { return newBuilder(this); }
 
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     /**
      * Protobuf type {@code swim.Message}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageLite.Builder<
-          co.willsalz.swim.generated.Gossip.Message, Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:swim.Message)
         co.willsalz.swim.generated.Gossip.MessageOrBuilder {
-      // Construct using co.willsalz.swim.generated.Gossip.Message.newBuilder()
-      private Builder() {
-        super(DEFAULT_INSTANCE);
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_descriptor;
       }
 
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                co.willsalz.swim.generated.Gossip.Message.class, co.willsalz.swim.generated.Gossip.Message.Builder.class);
+      }
 
+      // Construct using co.willsalz.swim.generated.Gossip.Message.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getPingFieldBuilder();
+          getAckFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        type_ = co.willsalz.swim.generated.Gossip.Message.Type.PING;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (pingBuilder_ == null) {
+          ping_ = co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance();
+        } else {
+          pingBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (ackBuilder_ == null) {
+          ack_ = co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance();
+        } else {
+          ackBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_descriptor;
+      }
+
+      public co.willsalz.swim.generated.Gossip.Message getDefaultInstanceForType() {
+        return co.willsalz.swim.generated.Gossip.Message.getDefaultInstance();
+      }
+
+      public co.willsalz.swim.generated.Gossip.Message build() {
+        co.willsalz.swim.generated.Gossip.Message result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public co.willsalz.swim.generated.Gossip.Message buildPartial() {
+        co.willsalz.swim.generated.Gossip.Message result = new co.willsalz.swim.generated.Gossip.Message(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (pingBuilder_ == null) {
+          result.ping_ = ping_;
+        } else {
+          result.ping_ = pingBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (ackBuilder_ == null) {
+          result.ack_ = ack_;
+        } else {
+          result.ack_ = ackBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof co.willsalz.swim.generated.Gossip.Message) {
+          return mergeFrom((co.willsalz.swim.generated.Gossip.Message)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(co.willsalz.swim.generated.Gossip.Message other) {
+        if (other == co.willsalz.swim.generated.Gossip.Message.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasPing()) {
+          mergePing(other.getPing());
+        }
+        if (other.hasAck()) {
+          mergeAck(other.getAck());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasType()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        co.willsalz.swim.generated.Gossip.Message parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (co.willsalz.swim.generated.Gossip.Message) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private co.willsalz.swim.generated.Gossip.Message.Type type_ = co.willsalz.swim.generated.Gossip.Message.Type.PING;
       /**
        * <code>required .swim.Message.Type type = 1;</code>
        */
       public boolean hasType() {
-        return instance.hasType();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>required .swim.Message.Type type = 1;</code>
        */
       public co.willsalz.swim.generated.Gossip.Message.Type getType() {
-        return instance.getType();
+        return type_;
       }
       /**
        * <code>required .swim.Message.Type type = 1;</code>
        */
       public Builder setType(co.willsalz.swim.generated.Gossip.Message.Type value) {
-        copyOnWrite();
-        instance.setType(value);
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        type_ = value;
+        onChanged();
         return this;
       }
       /**
        * <code>required .swim.Message.Type type = 1;</code>
        */
       public Builder clearType() {
-        copyOnWrite();
-        instance.clearType();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = co.willsalz.swim.generated.Gossip.Message.Type.PING;
+        onChanged();
         return this;
       }
 
+      private co.willsalz.swim.generated.Gossip.Ping ping_ = co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          co.willsalz.swim.generated.Gossip.Ping, co.willsalz.swim.generated.Gossip.Ping.Builder, co.willsalz.swim.generated.Gossip.PingOrBuilder> pingBuilder_;
       /**
        * <code>optional .swim.Ping ping = 2;</code>
        */
       public boolean hasPing() {
-        return instance.hasPing();
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .swim.Ping ping = 2;</code>
        */
       public co.willsalz.swim.generated.Gossip.Ping getPing() {
-        return instance.getPing();
+        if (pingBuilder_ == null) {
+          return ping_;
+        } else {
+          return pingBuilder_.getMessage();
+        }
       }
       /**
        * <code>optional .swim.Ping ping = 2;</code>
        */
       public Builder setPing(co.willsalz.swim.generated.Gossip.Ping value) {
-        copyOnWrite();
-        instance.setPing(value);
-        return this;
+        if (pingBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ping_ = value;
+          onChanged();
+        } else {
+          pingBuilder_.setMessage(value);
         }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
       /**
        * <code>optional .swim.Ping ping = 2;</code>
        */
       public Builder setPing(
           co.willsalz.swim.generated.Gossip.Ping.Builder builderForValue) {
-        copyOnWrite();
-        instance.setPing(builderForValue);
+        if (pingBuilder_ == null) {
+          ping_ = builderForValue.build();
+          onChanged();
+        } else {
+          pingBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
        * <code>optional .swim.Ping ping = 2;</code>
        */
       public Builder mergePing(co.willsalz.swim.generated.Gossip.Ping value) {
-        copyOnWrite();
-        instance.mergePing(value);
+        if (pingBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              ping_ != co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance()) {
+            ping_ =
+              co.willsalz.swim.generated.Gossip.Ping.newBuilder(ping_).mergeFrom(value).buildPartial();
+          } else {
+            ping_ = value;
+          }
+          onChanged();
+        } else {
+          pingBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
        * <code>optional .swim.Ping ping = 2;</code>
        */
-      public Builder clearPing() {  copyOnWrite();
-        instance.clearPing();
+      public Builder clearPing() {
+        if (pingBuilder_ == null) {
+          ping_ = co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance();
+          onChanged();
+        } else {
+          pingBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
+      /**
+       * <code>optional .swim.Ping ping = 2;</code>
+       */
+      public co.willsalz.swim.generated.Gossip.Ping.Builder getPingBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getPingFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .swim.Ping ping = 2;</code>
+       */
+      public co.willsalz.swim.generated.Gossip.PingOrBuilder getPingOrBuilder() {
+        if (pingBuilder_ != null) {
+          return pingBuilder_.getMessageOrBuilder();
+        } else {
+          return ping_;
+        }
+      }
+      /**
+       * <code>optional .swim.Ping ping = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          co.willsalz.swim.generated.Gossip.Ping, co.willsalz.swim.generated.Gossip.Ping.Builder, co.willsalz.swim.generated.Gossip.PingOrBuilder> 
+          getPingFieldBuilder() {
+        if (pingBuilder_ == null) {
+          pingBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              co.willsalz.swim.generated.Gossip.Ping, co.willsalz.swim.generated.Gossip.Ping.Builder, co.willsalz.swim.generated.Gossip.PingOrBuilder>(
+                  getPing(),
+                  getParentForChildren(),
+                  isClean());
+          ping_ = null;
+        }
+        return pingBuilder_;
+      }
 
+      private co.willsalz.swim.generated.Gossip.Ack ack_ = co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          co.willsalz.swim.generated.Gossip.Ack, co.willsalz.swim.generated.Gossip.Ack.Builder, co.willsalz.swim.generated.Gossip.AckOrBuilder> ackBuilder_;
       /**
        * <code>optional .swim.Ack ack = 3;</code>
        */
       public boolean hasAck() {
-        return instance.hasAck();
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .swim.Ack ack = 3;</code>
        */
       public co.willsalz.swim.generated.Gossip.Ack getAck() {
-        return instance.getAck();
+        if (ackBuilder_ == null) {
+          return ack_;
+        } else {
+          return ackBuilder_.getMessage();
+        }
       }
       /**
        * <code>optional .swim.Ack ack = 3;</code>
        */
       public Builder setAck(co.willsalz.swim.generated.Gossip.Ack value) {
-        copyOnWrite();
-        instance.setAck(value);
-        return this;
+        if (ackBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ack_ = value;
+          onChanged();
+        } else {
+          ackBuilder_.setMessage(value);
         }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
       /**
        * <code>optional .swim.Ack ack = 3;</code>
        */
       public Builder setAck(
           co.willsalz.swim.generated.Gossip.Ack.Builder builderForValue) {
-        copyOnWrite();
-        instance.setAck(builderForValue);
+        if (ackBuilder_ == null) {
+          ack_ = builderForValue.build();
+          onChanged();
+        } else {
+          ackBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
        * <code>optional .swim.Ack ack = 3;</code>
        */
       public Builder mergeAck(co.willsalz.swim.generated.Gossip.Ack value) {
-        copyOnWrite();
-        instance.mergeAck(value);
+        if (ackBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              ack_ != co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance()) {
+            ack_ =
+              co.willsalz.swim.generated.Gossip.Ack.newBuilder(ack_).mergeFrom(value).buildPartial();
+          } else {
+            ack_ = value;
+          }
+          onChanged();
+        } else {
+          ackBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
        * <code>optional .swim.Ack ack = 3;</code>
        */
-      public Builder clearAck() {  copyOnWrite();
-        instance.clearAck();
+      public Builder clearAck() {
+        if (ackBuilder_ == null) {
+          ack_ = co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance();
+          onChanged();
+        } else {
+          ackBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
+      }
+      /**
+       * <code>optional .swim.Ack ack = 3;</code>
+       */
+      public co.willsalz.swim.generated.Gossip.Ack.Builder getAckBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getAckFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .swim.Ack ack = 3;</code>
+       */
+      public co.willsalz.swim.generated.Gossip.AckOrBuilder getAckOrBuilder() {
+        if (ackBuilder_ != null) {
+          return ackBuilder_.getMessageOrBuilder();
+        } else {
+          return ack_;
+        }
+      }
+      /**
+       * <code>optional .swim.Ack ack = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          co.willsalz.swim.generated.Gossip.Ack, co.willsalz.swim.generated.Gossip.Ack.Builder, co.willsalz.swim.generated.Gossip.AckOrBuilder> 
+          getAckFieldBuilder() {
+        if (ackBuilder_ == null) {
+          ackBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              co.willsalz.swim.generated.Gossip.Ack, co.willsalz.swim.generated.Gossip.Ack.Builder, co.willsalz.swim.generated.Gossip.AckOrBuilder>(
+                  getAck(),
+                  getParentForChildren(),
+                  isClean());
+          ack_ = null;
+        }
+        return ackBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:swim.Message)
     }
-    private byte memoizedIsInitialized = -1;
-    protected final Object dynamicMethod(
-        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
-        Object arg0, Object arg1) {
-      switch (method) {
-        case NEW_MUTABLE_INSTANCE: {
-          return new co.willsalz.swim.generated.Gossip.Message();
-        }
-        case IS_INITIALIZED: {
-          byte isInitialized = memoizedIsInitialized;
-          if (isInitialized == 1) return DEFAULT_INSTANCE;
-          if (isInitialized == 0) return null;
 
-          boolean shouldMemoize = ((Boolean) arg0).booleanValue();
-          if (!hasType()) {
-            if (shouldMemoize) {
-              memoizedIsInitialized = 0;
-            }
-            return null;
-          }
-          if (shouldMemoize) memoizedIsInitialized = 1;
-          return DEFAULT_INSTANCE;
-
-        }
-        case MAKE_IMMUTABLE: {
-          return null;
-        }
-        case NEW_BUILDER: {
-          return new Builder();
-        }
-        case VISIT: {
-          Visitor visitor = (Visitor) arg0;
-          co.willsalz.swim.generated.Gossip.Message other = (co.willsalz.swim.generated.Gossip.Message) arg1;
-          type_ = visitor.visitInt(hasType(), type_,
-              other.hasType(), other.type_);
-          ping_ = visitor.visitMessage(ping_, other.ping_);
-          ack_ = visitor.visitMessage(ack_, other.ack_);
-          if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
-              .INSTANCE) {
-            bitField0_ |= other.bitField0_;
-          }
-          return this;
-        }
-        case MERGE_FROM_STREAM: {
-          com.google.protobuf.CodedInputStream input =
-              (com.google.protobuf.CodedInputStream) arg0;
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
-              (com.google.protobuf.ExtensionRegistryLite) arg1;
-          try {
-            boolean done = false;
-            while (!done) {
-              int tag = input.readTag();
-              switch (tag) {
-                case 0:
-                  done = true;
-                  break;
-                default: {
-                  if (!parseUnknownField(tag, input)) {
-                    done = true;
-                  }
-                  break;
-                }
-                case 8: {
-                  int rawValue = input.readEnum();
-                  co.willsalz.swim.generated.Gossip.Message.Type value = co.willsalz.swim.generated.Gossip.Message.Type.forNumber(rawValue);
-                  if (value == null) {
-                    super.mergeVarintField(1, rawValue);
-                  } else {
-                    bitField0_ |= 0x00000001;
-                    type_ = rawValue;
-                  }
-                  break;
-                }
-                case 18: {
-                  co.willsalz.swim.generated.Gossip.Ping.Builder subBuilder = null;
-                  if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                    subBuilder = ping_.toBuilder();
-                  }
-                  ping_ = input.readMessage(co.willsalz.swim.generated.Gossip.Ping.parser(), extensionRegistry);
-                  if (subBuilder != null) {
-                    subBuilder.mergeFrom(ping_);
-                    ping_ = subBuilder.buildPartial();
-                  }
-                  bitField0_ |= 0x00000002;
-                  break;
-                }
-                case 26: {
-                  co.willsalz.swim.generated.Gossip.Ack.Builder subBuilder = null;
-                  if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                    subBuilder = ack_.toBuilder();
-                  }
-                  ack_ = input.readMessage(co.willsalz.swim.generated.Gossip.Ack.parser(), extensionRegistry);
-                  if (subBuilder != null) {
-                    subBuilder.mergeFrom(ack_);
-                    ack_ = subBuilder.buildPartial();
-                  }
-                  bitField0_ |= 0x00000004;
-                  break;
-                }
-              }
-            }
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw new RuntimeException(e.setUnfinishedMessage(this));
-          } catch (java.io.IOException e) {
-            throw new RuntimeException(
-                new com.google.protobuf.InvalidProtocolBufferException(
-                    e.getMessage()).setUnfinishedMessage(this));
-          } finally {
-          }
-        }
-        case GET_DEFAULT_INSTANCE: {
-          return DEFAULT_INSTANCE;
-        }
-        case GET_PARSER: {
-          if (PARSER == null) {    synchronized (co.willsalz.swim.generated.Gossip.Message.class) {
-              if (PARSER == null) {
-                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
-              }
-            }
-          }
-          return PARSER;
-        }
-      }
-      throw new UnsupportedOperationException();
+    static {
+      defaultInstance = new Message(true);
+      defaultInstance.initFields();
     }
-
 
     // @@protoc_insertion_point(class_scope:swim.Message)
-    private static final co.willsalz.swim.generated.Gossip.Message DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new Message();
-      DEFAULT_INSTANCE.makeImmutable();
-    }
-
-    public static co.willsalz.swim.generated.Gossip.Message getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static volatile com.google.protobuf.Parser<Message> PARSER;
-
-    public static com.google.protobuf.Parser<Message> parser() {
-      return DEFAULT_INSTANCE.getParserForType();
-    }
   }
 
   public interface PingOrBuilder extends
       // @@protoc_insertion_point(interface_extends:swim.Ping)
-      com.google.protobuf.MessageLiteOrBuilder {
+      com.google.protobuf.MessageOrBuilder {
   }
   /**
    * Protobuf type {@code swim.Ping}
    */
-  public  static final class Ping extends
-      com.google.protobuf.GeneratedMessageLite<
-          Ping, Ping.Builder> implements
+  public static final class Ping extends
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:swim.Ping)
       PingOrBuilder {
-    private Ping() {
+    // Use Ping.newBuilder() to construct.
+    private Ping(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      unknownFields.writeTo(output);
+    private Ping(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Ping defaultInstance;
+    public static Ping getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Ping getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Ping(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return co.willsalz.swim.generated.Gossip.internal_static_swim_Ping_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return co.willsalz.swim.generated.Gossip.internal_static_swim_Ping_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              co.willsalz.swim.generated.Gossip.Ping.class, co.willsalz.swim.generated.Gossip.Ping.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Ping> PARSER =
+        new com.google.protobuf.AbstractParser<Ping>() {
+      public Ping parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Ping(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Ping> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
     public static co.willsalz.swim.generated.Gossip.Ping parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data);
+      return PARSER.parseFrom(data);
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data);
+      return PARSER.parseFrom(data);
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input);
+      return PARSER.parseFrom(input);
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input);
+      return PARSER.parseFrom(input);
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(co.willsalz.swim.generated.Gossip.Ping prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
+    public Builder toBuilder() { return newBuilder(this); }
 
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     /**
      * Protobuf type {@code swim.Ping}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageLite.Builder<
-          co.willsalz.swim.generated.Gossip.Ping, Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:swim.Ping)
         co.willsalz.swim.generated.Gossip.PingOrBuilder {
-      // Construct using co.willsalz.swim.generated.Gossip.Ping.newBuilder()
-      private Builder() {
-        super(DEFAULT_INSTANCE);
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return co.willsalz.swim.generated.Gossip.internal_static_swim_Ping_descriptor;
       }
 
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return co.willsalz.swim.generated.Gossip.internal_static_swim_Ping_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                co.willsalz.swim.generated.Gossip.Ping.class, co.willsalz.swim.generated.Gossip.Ping.Builder.class);
+      }
+
+      // Construct using co.willsalz.swim.generated.Gossip.Ping.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return co.willsalz.swim.generated.Gossip.internal_static_swim_Ping_descriptor;
+      }
+
+      public co.willsalz.swim.generated.Gossip.Ping getDefaultInstanceForType() {
+        return co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance();
+      }
+
+      public co.willsalz.swim.generated.Gossip.Ping build() {
+        co.willsalz.swim.generated.Gossip.Ping result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public co.willsalz.swim.generated.Gossip.Ping buildPartial() {
+        co.willsalz.swim.generated.Gossip.Ping result = new co.willsalz.swim.generated.Gossip.Ping(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof co.willsalz.swim.generated.Gossip.Ping) {
+          return mergeFrom((co.willsalz.swim.generated.Gossip.Ping)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(co.willsalz.swim.generated.Gossip.Ping other) {
+        if (other == co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        co.willsalz.swim.generated.Gossip.Ping parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (co.willsalz.swim.generated.Gossip.Ping) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
 
       // @@protoc_insertion_point(builder_scope:swim.Ping)
     }
-    protected final Object dynamicMethod(
-        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
-        Object arg0, Object arg1) {
-      switch (method) {
-        case NEW_MUTABLE_INSTANCE: {
-          return new co.willsalz.swim.generated.Gossip.Ping();
-        }
-        case IS_INITIALIZED: {
-          return DEFAULT_INSTANCE;
-        }
-        case MAKE_IMMUTABLE: {
-          return null;
-        }
-        case NEW_BUILDER: {
-          return new Builder();
-        }
-        case VISIT: {
-          Visitor visitor = (Visitor) arg0;
-          co.willsalz.swim.generated.Gossip.Ping other = (co.willsalz.swim.generated.Gossip.Ping) arg1;
-          if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
-              .INSTANCE) {
-          }
-          return this;
-        }
-        case MERGE_FROM_STREAM: {
-          com.google.protobuf.CodedInputStream input =
-              (com.google.protobuf.CodedInputStream) arg0;
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
-              (com.google.protobuf.ExtensionRegistryLite) arg1;
-          try {
-            boolean done = false;
-            while (!done) {
-              int tag = input.readTag();
-              switch (tag) {
-                case 0:
-                  done = true;
-                  break;
-                default: {
-                  if (!parseUnknownField(tag, input)) {
-                    done = true;
-                  }
-                  break;
-                }
-              }
-            }
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw new RuntimeException(e.setUnfinishedMessage(this));
-          } catch (java.io.IOException e) {
-            throw new RuntimeException(
-                new com.google.protobuf.InvalidProtocolBufferException(
-                    e.getMessage()).setUnfinishedMessage(this));
-          } finally {
-          }
-        }
-        case GET_DEFAULT_INSTANCE: {
-          return DEFAULT_INSTANCE;
-        }
-        case GET_PARSER: {
-          if (PARSER == null) {    synchronized (co.willsalz.swim.generated.Gossip.Ping.class) {
-              if (PARSER == null) {
-                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
-              }
-            }
-          }
-          return PARSER;
-        }
-      }
-      throw new UnsupportedOperationException();
-    }
 
+    static {
+      defaultInstance = new Ping(true);
+      defaultInstance.initFields();
+    }
 
     // @@protoc_insertion_point(class_scope:swim.Ping)
-    private static final co.willsalz.swim.generated.Gossip.Ping DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new Ping();
-      DEFAULT_INSTANCE.makeImmutable();
-    }
-
-    public static co.willsalz.swim.generated.Gossip.Ping getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static volatile com.google.protobuf.Parser<Ping> PARSER;
-
-    public static com.google.protobuf.Parser<Ping> parser() {
-      return DEFAULT_INSTANCE.getParserForType();
-    }
   }
 
   public interface AckOrBuilder extends
       // @@protoc_insertion_point(interface_extends:swim.Ack)
-      com.google.protobuf.MessageLiteOrBuilder {
+      com.google.protobuf.MessageOrBuilder {
   }
   /**
    * Protobuf type {@code swim.Ack}
    */
-  public  static final class Ack extends
-      com.google.protobuf.GeneratedMessageLite<
-          Ack, Ack.Builder> implements
+  public static final class Ack extends
+      com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:swim.Ack)
       AckOrBuilder {
-    private Ack() {
+    // Use Ack.newBuilder() to construct.
+    private Ack(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
     }
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      unknownFields.writeTo(output);
+    private Ack(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Ack defaultInstance;
+    public static Ack getDefaultInstance() {
+      return defaultInstance;
     }
 
+    public Ack getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Ack(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return co.willsalz.swim.generated.Gossip.internal_static_swim_Ack_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return co.willsalz.swim.generated.Gossip.internal_static_swim_Ack_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              co.willsalz.swim.generated.Gossip.Ack.class, co.willsalz.swim.generated.Gossip.Ack.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Ack> PARSER =
+        new com.google.protobuf.AbstractParser<Ack>() {
+      public Ack parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Ack(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Ack> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
 
       size = 0;
-      size += unknownFields.getSerializedSize();
+      size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
 
     public static co.willsalz.swim.generated.Gossip.Ack parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data);
+      return PARSER.parseFrom(data);
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data);
+      return PARSER.parseFrom(data);
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, data, extensionRegistry);
+      return PARSER.parseFrom(data, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input);
+      return PARSER.parseFrom(input);
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return parseDelimitedFrom(DEFAULT_INSTANCE, input);
+      return PARSER.parseDelimitedFrom(input);
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input);
+      return PARSER.parseFrom(input);
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageLite.parseFrom(
-          DEFAULT_INSTANCE, input, extensionRegistry);
+      return PARSER.parseFrom(input, extensionRegistry);
     }
 
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(co.willsalz.swim.generated.Gossip.Ack prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return newBuilder().mergeFrom(prototype);
     }
+    public Builder toBuilder() { return newBuilder(this); }
 
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     /**
      * Protobuf type {@code swim.Ack}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessageLite.Builder<
-          co.willsalz.swim.generated.Gossip.Ack, Builder> implements
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:swim.Ack)
         co.willsalz.swim.generated.Gossip.AckOrBuilder {
-      // Construct using co.willsalz.swim.generated.Gossip.Ack.newBuilder()
-      private Builder() {
-        super(DEFAULT_INSTANCE);
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return co.willsalz.swim.generated.Gossip.internal_static_swim_Ack_descriptor;
       }
 
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return co.willsalz.swim.generated.Gossip.internal_static_swim_Ack_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                co.willsalz.swim.generated.Gossip.Ack.class, co.willsalz.swim.generated.Gossip.Ack.Builder.class);
+      }
+
+      // Construct using co.willsalz.swim.generated.Gossip.Ack.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return co.willsalz.swim.generated.Gossip.internal_static_swim_Ack_descriptor;
+      }
+
+      public co.willsalz.swim.generated.Gossip.Ack getDefaultInstanceForType() {
+        return co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance();
+      }
+
+      public co.willsalz.swim.generated.Gossip.Ack build() {
+        co.willsalz.swim.generated.Gossip.Ack result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public co.willsalz.swim.generated.Gossip.Ack buildPartial() {
+        co.willsalz.swim.generated.Gossip.Ack result = new co.willsalz.swim.generated.Gossip.Ack(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof co.willsalz.swim.generated.Gossip.Ack) {
+          return mergeFrom((co.willsalz.swim.generated.Gossip.Ack)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(co.willsalz.swim.generated.Gossip.Ack other) {
+        if (other == co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        co.willsalz.swim.generated.Gossip.Ack parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (co.willsalz.swim.generated.Gossip.Ack) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
 
       // @@protoc_insertion_point(builder_scope:swim.Ack)
     }
-    protected final Object dynamicMethod(
-        com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
-        Object arg0, Object arg1) {
-      switch (method) {
-        case NEW_MUTABLE_INSTANCE: {
-          return new co.willsalz.swim.generated.Gossip.Ack();
-        }
-        case IS_INITIALIZED: {
-          return DEFAULT_INSTANCE;
-        }
-        case MAKE_IMMUTABLE: {
-          return null;
-        }
-        case NEW_BUILDER: {
-          return new Builder();
-        }
-        case VISIT: {
-          Visitor visitor = (Visitor) arg0;
-          co.willsalz.swim.generated.Gossip.Ack other = (co.willsalz.swim.generated.Gossip.Ack) arg1;
-          if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
-              .INSTANCE) {
-          }
-          return this;
-        }
-        case MERGE_FROM_STREAM: {
-          com.google.protobuf.CodedInputStream input =
-              (com.google.protobuf.CodedInputStream) arg0;
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry =
-              (com.google.protobuf.ExtensionRegistryLite) arg1;
-          try {
-            boolean done = false;
-            while (!done) {
-              int tag = input.readTag();
-              switch (tag) {
-                case 0:
-                  done = true;
-                  break;
-                default: {
-                  if (!parseUnknownField(tag, input)) {
-                    done = true;
-                  }
-                  break;
-                }
-              }
-            }
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw new RuntimeException(e.setUnfinishedMessage(this));
-          } catch (java.io.IOException e) {
-            throw new RuntimeException(
-                new com.google.protobuf.InvalidProtocolBufferException(
-                    e.getMessage()).setUnfinishedMessage(this));
-          } finally {
-          }
-        }
-        case GET_DEFAULT_INSTANCE: {
-          return DEFAULT_INSTANCE;
-        }
-        case GET_PARSER: {
-          if (PARSER == null) {    synchronized (co.willsalz.swim.generated.Gossip.Ack.class) {
-              if (PARSER == null) {
-                PARSER = new DefaultInstanceBasedParser(DEFAULT_INSTANCE);
-              }
-            }
-          }
-          return PARSER;
-        }
-      }
-      throw new UnsupportedOperationException();
-    }
 
+    static {
+      defaultInstance = new Ack(true);
+      defaultInstance.initFields();
+    }
 
     // @@protoc_insertion_point(class_scope:swim.Ack)
-    private static final co.willsalz.swim.generated.Gossip.Ack DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new Ack();
-      DEFAULT_INSTANCE.makeImmutable();
-    }
-
-    public static co.willsalz.swim.generated.Gossip.Ack getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static volatile com.google.protobuf.Parser<Ack> PARSER;
-
-    public static com.google.protobuf.Parser<Ack> parser() {
-      return DEFAULT_INSTANCE.getParserForType();
-    }
   }
 
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_swim_Message_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_swim_Message_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_swim_Message_Peer_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_swim_Message_Peer_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_swim_Ping_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_swim_Ping_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_swim_Ack_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_swim_Ack_fieldAccessorTable;
 
+  public static com.google.protobuf.Descriptors.FileDescriptor
+      getDescriptor() {
+    return descriptor;
+  }
+  private static com.google.protobuf.Descriptors.FileDescriptor
+      descriptor;
   static {
+    java.lang.String[] descriptorData = {
+      "\n\033src/main/proto/Gossip.proto\022\004swim\"\234\001\n\007" +
+      "Message\022 \n\004type\030\001 \002(\0162\022.swim.Message.Typ" +
+      "e\022\030\n\004ping\030\002 \001(\0132\n.swim.Ping\022\026\n\003ack\030\003 \001(\013" +
+      "2\t.swim.Ack\032\"\n\004Peer\022\014\n\004host\030\001 \002(\t\022\014\n\004por" +
+      "t\030\002 \002(\005\"\031\n\004Type\022\010\n\004PING\020\001\022\007\n\003ACK\020\002\"\006\n\004Pi" +
+      "ng\"\005\n\003AckB&\n\032co.willsalz.swim.generatedB" +
+      "\006GossipH\001"
+    };
+    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
+    com.google.protobuf.Descriptors.FileDescriptor
+      .internalBuildGeneratedFileFrom(descriptorData,
+        new com.google.protobuf.Descriptors.FileDescriptor[] {
+        }, assigner);
+    internal_static_swim_Message_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_swim_Message_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_swim_Message_descriptor,
+        new java.lang.String[] { "Type", "Ping", "Ack", });
+    internal_static_swim_Message_Peer_descriptor =
+      internal_static_swim_Message_descriptor.getNestedTypes().get(0);
+    internal_static_swim_Message_Peer_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_swim_Message_Peer_descriptor,
+        new java.lang.String[] { "Host", "Port", });
+    internal_static_swim_Ping_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_swim_Ping_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_swim_Ping_descriptor,
+        new java.lang.String[] { });
+    internal_static_swim_Ack_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_swim_Ack_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_swim_Ack_descriptor,
+        new java.lang.String[] { });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
