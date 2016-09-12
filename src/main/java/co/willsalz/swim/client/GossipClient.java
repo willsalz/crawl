@@ -28,10 +28,10 @@ public final class GossipClient {
                 .channel(NioDatagramChannel.class)
                 .option(ChannelOption.SO_BROADCAST, true)
                 .option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
-                .handler(new GossipClientPipeline());
+                .handler(new GossipPipeline());
 
             final Channel ch = b.bind(0).sync().channel();
-            final GossipClientHandler handler = ch.pipeline().get(GossipClientHandler.class);
+            final GossipHandler handler = ch.pipeline().get(GossipHandler.class);
             ChannelFuture f = handler.ping(new InetSocketAddress("255.255.255.255", PORT));
 
             if (!ch.closeFuture().await(5000)) {

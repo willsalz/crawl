@@ -1,5 +1,6 @@
 package co.willsalz.swim.server;
 
+import co.willsalz.swim.client.GossipPipeline;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.ChannelOption;
@@ -24,7 +25,7 @@ public final class GossipServer {
                 .channel(NioDatagramChannel.class)
                 .option(ChannelOption.SO_BROADCAST, true)
                 .option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
-                .handler(new GossipServerPipeline());
+                .handler(new GossipPipeline());
 
             b.bind(PORT).sync().channel().closeFuture().await();
         } finally {

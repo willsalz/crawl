@@ -19,4 +19,9 @@ public class EnvelopingDatagramPacketDecoder extends DatagramPacketDecoder {
         super.decode(ctx, msg, tmp);
         out.add(new DefaultAddressedEnvelope<>(tmp.get(0), msg.recipient(), msg.sender()));
     }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        cause.printStackTrace();
+    }
 }

@@ -9,12 +9,12 @@ import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.logging.LoggingHandler;
 
-public class GossipClientPipeline extends ChannelInitializer<DatagramChannel> {
+public class GossipPipeline extends ChannelInitializer<DatagramChannel> {
     @Override
     protected void initChannel(DatagramChannel ch) throws Exception {
         ch.pipeline().addLast("loggingHandler", new LoggingHandler());
         ch.pipeline().addLast("udpDecoder", new EnvelopingDatagramPacketDecoder(new ProtobufDecoder(Gossip.Message.getDefaultInstance())));
         ch.pipeline().addLast("udpEncoder", new DatagramPacketEncoder<>(new ProtobufEncoder()));
-        ch.pipeline().addLast("clientHandler", new GossipClientHandler());
+        ch.pipeline().addLast("clientHandler", new GossipHandler());
     }
 }
