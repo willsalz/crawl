@@ -6,7 +6,13 @@ package co.willsalz.swim.generated;
 public final class Gossip {
   private Gossip() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface MessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:swim.Message)
@@ -50,37 +56,28 @@ public final class Gossip {
   /**
    * Protobuf type {@code swim.Message}
    */
-  public static final class Message extends
-      com.google.protobuf.GeneratedMessage implements
+  public  static final class Message extends
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:swim.Message)
       MessageOrBuilder {
     // Use Message.newBuilder() to construct.
-    private Message(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Message(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Message(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Message defaultInstance;
-    public static Message getDefaultInstance() {
-      return defaultInstance;
+    private Message() {
+      type_ = 1;
     }
 
-    public Message getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
+    getUnknownFields() {
       return this.unknownFields;
     }
     private Message(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -106,7 +103,7 @@ public final class Gossip {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
                 bitField0_ |= 0x00000001;
-                type_ = value;
+                type_ = rawValue;
               }
               break;
             }
@@ -142,7 +139,7 @@ public final class Gossip {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -153,26 +150,11 @@ public final class Gossip {
       return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               co.willsalz.swim.generated.Gossip.Message.class, co.willsalz.swim.generated.Gossip.Message.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<Message> PARSER =
-        new com.google.protobuf.AbstractParser<Message>() {
-      public Message parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Message(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Message> getParserForType() {
-      return PARSER;
     }
 
     /**
@@ -183,11 +165,11 @@ public final class Gossip {
       /**
        * <code>PING = 1;</code>
        */
-      PING(0, 1),
+      PING(1),
       /**
        * <code>ACK = 2;</code>
        */
-      ACK(1, 2),
+      ACK(2),
       ;
 
       /**
@@ -200,9 +182,19 @@ public final class Gossip {
       public static final int ACK_VALUE = 2;
 
 
-      public final int getNumber() { return value; }
+      public final int getNumber() {
+        return value;
+      }
 
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
       public static Type valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static Type forNumber(int value) {
         switch (value) {
           case 1: return PING;
           case 2: return ACK;
@@ -214,17 +206,17 @@ public final class Gossip {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static com.google.protobuf.Internal.EnumLiteMap<Type>
-          internalValueMap =
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          Type> internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<Type>() {
               public Type findValueByNumber(int number) {
-                return Type.valueOf(number);
+                return Type.forNumber(number);
               }
             };
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
+        return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptorForType() {
@@ -246,11 +238,9 @@ public final class Gossip {
         return VALUES[desc.getIndex()];
       }
 
-      private final int index;
       private final int value;
 
-      private Type(int index, int value) {
-        this.index = index;
+      private Type(int value) {
         this.value = value;
       }
 
@@ -287,37 +277,29 @@ public final class Gossip {
     /**
      * Protobuf type {@code swim.Message.Peer}
      */
-    public static final class Peer extends
-        com.google.protobuf.GeneratedMessage implements
+    public  static final class Peer extends
+        com.google.protobuf.GeneratedMessageV3 implements
         // @@protoc_insertion_point(message_implements:swim.Message.Peer)
         PeerOrBuilder {
       // Use Peer.newBuilder() to construct.
-      private Peer(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      private Peer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
-        this.unknownFields = builder.getUnknownFields();
       }
-      private Peer(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-      private static final Peer defaultInstance;
-      public static Peer getDefaultInstance() {
-        return defaultInstance;
+      private Peer() {
+        host_ = "";
+        port_ = 0;
       }
 
-      public Peer getDefaultInstanceForType() {
-        return defaultInstance;
-      }
-
-      private final com.google.protobuf.UnknownFieldSet unknownFields;
       @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
-          getUnknownFields() {
+      getUnknownFields() {
         return this.unknownFields;
       }
       private Peer(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        initFields();
+        this();
         int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -353,7 +335,7 @@ public final class Gossip {
           throw e.setUnfinishedMessage(this);
         } catch (java.io.IOException e) {
           throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this);
+              e).setUnfinishedMessage(this);
         } finally {
           this.unknownFields = unknownFields.build();
           makeExtensionsImmutable();
@@ -364,31 +346,16 @@ public final class Gossip {
         return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_Peer_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_Peer_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 co.willsalz.swim.generated.Gossip.Message.Peer.class, co.willsalz.swim.generated.Gossip.Message.Peer.Builder.class);
       }
 
-      public static com.google.protobuf.Parser<Peer> PARSER =
-          new com.google.protobuf.AbstractParser<Peer>() {
-        public Peer parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Peer(input, extensionRegistry);
-        }
-      };
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<Peer> getParserForType() {
-        return PARSER;
-      }
-
       private int bitField0_;
       public static final int HOST_FIELD_NUMBER = 1;
-      private java.lang.Object host_;
+      private volatile java.lang.Object host_;
       /**
        * <code>required string host = 1;</code>
        */
@@ -444,10 +411,6 @@ public final class Gossip {
         return port_;
       }
 
-      private void initFields() {
-        host_ = "";
-        port_ = 0;
-      }
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
@@ -468,40 +431,76 @@ public final class Gossip {
 
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        getSerializedSize();
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeBytes(1, getHostBytes());
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, host_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           output.writeInt32(2, port_);
         }
-        getUnknownFields().writeTo(output);
+        unknownFields.writeTo(output);
       }
 
-      private int memoizedSerializedSize = -1;
       public int getSerializedSize() {
-        int size = memoizedSerializedSize;
+        int size = memoizedSize;
         if (size != -1) return size;
 
         size = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, getHostBytes());
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, host_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           size += com.google.protobuf.CodedOutputStream
             .computeInt32Size(2, port_);
         }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
         return size;
       }
 
       private static final long serialVersionUID = 0L;
       @java.lang.Override
-      protected java.lang.Object writeReplace()
-          throws java.io.ObjectStreamException {
-        return super.writeReplace();
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof co.willsalz.swim.generated.Gossip.Message.Peer)) {
+          return super.equals(obj);
+        }
+        co.willsalz.swim.generated.Gossip.Message.Peer other = (co.willsalz.swim.generated.Gossip.Message.Peer) obj;
+
+        boolean result = true;
+        result = result && (hasHost() == other.hasHost());
+        if (hasHost()) {
+          result = result && getHost()
+              .equals(other.getHost());
+        }
+        result = result && (hasPort() == other.hasPort());
+        if (hasPort()) {
+          result = result && (getPort()
+              == other.getPort());
+        }
+        result = result && unknownFields.equals(other.unknownFields);
+        return result;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptorForType().hashCode();
+        if (hasHost()) {
+          hash = (37 * hash) + HOST_FIELD_NUMBER;
+          hash = (53 * hash) + getHost().hashCode();
+        }
+        if (hasPort()) {
+          hash = (37 * hash) + PORT_FIELD_NUMBER;
+          hash = (53 * hash) + getPort();
+        }
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
       }
 
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseFrom(
@@ -527,46 +526,57 @@ public final class Gossip {
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
       }
       public static co.willsalz.swim.generated.Gossip.Message.Peer parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
       }
 
-      public static Builder newBuilder() { return Builder.create(); }
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(co.willsalz.swim.generated.Gossip.Message.Peer prototype) {
-        return newBuilder().mergeFrom(prototype);
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
       }
-      public Builder toBuilder() { return newBuilder(this); }
+      public static Builder newBuilder(co.willsalz.swim.generated.Gossip.Message.Peer prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
 
       @java.lang.Override
       protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         Builder builder = new Builder(parent);
         return builder;
       }
@@ -574,7 +584,7 @@ public final class Gossip {
        * Protobuf type {@code swim.Message.Peer}
        */
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
           // @@protoc_insertion_point(builder_implements:swim.Message.Peer)
           co.willsalz.swim.generated.Gossip.Message.PeerOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
@@ -582,7 +592,7 @@ public final class Gossip {
           return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_Peer_descriptor;
         }
 
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
           return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_Peer_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
@@ -595,18 +605,15 @@ public final class Gossip {
         }
 
         private Builder(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
         private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
           }
         }
-        private static Builder create() {
-          return new Builder();
-        }
-
         public Builder clear() {
           super.clear();
           host_ = "";
@@ -614,10 +621,6 @@ public final class Gossip {
           port_ = 0;
           bitField0_ = (bitField0_ & ~0x00000002);
           return this;
-        }
-
-        public Builder clone() {
-          return create().mergeFrom(buildPartial());
         }
 
         public com.google.protobuf.Descriptors.Descriptor
@@ -654,6 +657,32 @@ public final class Gossip {
           return result;
         }
 
+        public Builder clone() {
+          return (Builder) super.clone();
+        }
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            Object value) {
+          return (Builder) super.setField(field, value);
+        }
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return (Builder) super.clearField(field);
+        }
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return (Builder) super.clearOneof(oneof);
+        }
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, Object value) {
+          return (Builder) super.setRepeatedField(field, index, value);
+        }
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            Object value) {
+          return (Builder) super.addRepeatedField(field, value);
+        }
         public Builder mergeFrom(com.google.protobuf.Message other) {
           if (other instanceof co.willsalz.swim.generated.Gossip.Message.Peer) {
             return mergeFrom((co.willsalz.swim.generated.Gossip.Message.Peer)other);
@@ -673,17 +702,16 @@ public final class Gossip {
           if (other.hasPort()) {
             setPort(other.getPort());
           }
-          this.mergeUnknownFields(other.getUnknownFields());
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
           return this;
         }
 
         public final boolean isInitialized() {
           if (!hasHost()) {
-            
             return false;
           }
           if (!hasPort()) {
-            
             return false;
           }
           return true;
@@ -698,7 +726,7 @@ public final class Gossip {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
             parsedMessage = (co.willsalz.swim.generated.Gossip.Message.Peer) e.getUnfinishedMessage();
-            throw e;
+            throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
               mergeFrom(parsedMessage);
@@ -815,21 +843,58 @@ public final class Gossip {
           onChanged();
           return this;
         }
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
 
         // @@protoc_insertion_point(builder_scope:swim.Message.Peer)
       }
 
+      // @@protoc_insertion_point(class_scope:swim.Message.Peer)
+      private static final co.willsalz.swim.generated.Gossip.Message.Peer DEFAULT_INSTANCE;
       static {
-        defaultInstance = new Peer(true);
-        defaultInstance.initFields();
+        DEFAULT_INSTANCE = new co.willsalz.swim.generated.Gossip.Message.Peer();
       }
 
-      // @@protoc_insertion_point(class_scope:swim.Message.Peer)
+      public static co.willsalz.swim.generated.Gossip.Message.Peer getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      @java.lang.Deprecated public static final com.google.protobuf.Parser<Peer>
+          PARSER = new com.google.protobuf.AbstractParser<Peer>() {
+        public Peer parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            return new Peer(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<Peer> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<Peer> getParserForType() {
+        return PARSER;
+      }
+
+      public co.willsalz.swim.generated.Gossip.Message.Peer getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
     }
 
     private int bitField0_;
     public static final int TYPE_FIELD_NUMBER = 1;
-    private co.willsalz.swim.generated.Gossip.Message.Type type_;
+    private int type_;
     /**
      * <code>required .swim.Message.Type type = 1;</code>
      */
@@ -840,7 +905,8 @@ public final class Gossip {
      * <code>required .swim.Message.Type type = 1;</code>
      */
     public co.willsalz.swim.generated.Gossip.Message.Type getType() {
-      return type_;
+      co.willsalz.swim.generated.Gossip.Message.Type result = co.willsalz.swim.generated.Gossip.Message.Type.valueOf(type_);
+      return result == null ? co.willsalz.swim.generated.Gossip.Message.Type.PING : result;
     }
 
     public static final int PING_FIELD_NUMBER = 2;
@@ -855,13 +921,13 @@ public final class Gossip {
      * <code>optional .swim.Ping ping = 2;</code>
      */
     public co.willsalz.swim.generated.Gossip.Ping getPing() {
-      return ping_;
+      return ping_ == null ? co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance() : ping_;
     }
     /**
      * <code>optional .swim.Ping ping = 2;</code>
      */
     public co.willsalz.swim.generated.Gossip.PingOrBuilder getPingOrBuilder() {
-      return ping_;
+      return ping_ == null ? co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance() : ping_;
     }
 
     public static final int ACK_FIELD_NUMBER = 3;
@@ -876,20 +942,15 @@ public final class Gossip {
      * <code>optional .swim.Ack ack = 3;</code>
      */
     public co.willsalz.swim.generated.Gossip.Ack getAck() {
-      return ack_;
+      return ack_ == null ? co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance() : ack_;
     }
     /**
      * <code>optional .swim.Ack ack = 3;</code>
      */
     public co.willsalz.swim.generated.Gossip.AckOrBuilder getAckOrBuilder() {
-      return ack_;
+      return ack_ == null ? co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance() : ack_;
     }
 
-    private void initFields() {
-      type_ = co.willsalz.swim.generated.Gossip.Message.Type.PING;
-      ping_ = co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance();
-      ack_ = co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -906,47 +967,92 @@ public final class Gossip {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, type_.getNumber());
+        output.writeEnum(1, type_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, ping_);
+        output.writeMessage(2, getPing());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, ack_);
+        output.writeMessage(3, getAck());
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, type_.getNumber());
+          .computeEnumSize(1, type_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, ping_);
+          .computeMessageSize(2, getPing());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, ack_);
+          .computeMessageSize(3, getAck());
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof co.willsalz.swim.generated.Gossip.Message)) {
+        return super.equals(obj);
+      }
+      co.willsalz.swim.generated.Gossip.Message other = (co.willsalz.swim.generated.Gossip.Message) obj;
+
+      boolean result = true;
+      result = result && (hasType() == other.hasType());
+      if (hasType()) {
+        result = result && type_ == other.type_;
+      }
+      result = result && (hasPing() == other.hasPing());
+      if (hasPing()) {
+        result = result && getPing()
+            .equals(other.getPing());
+      }
+      result = result && (hasAck() == other.hasAck());
+      if (hasAck()) {
+        result = result && getAck()
+            .equals(other.getAck());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasType()) {
+        hash = (37 * hash) + TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + type_;
+      }
+      if (hasPing()) {
+        hash = (37 * hash) + PING_FIELD_NUMBER;
+        hash = (53 * hash) + getPing().hashCode();
+      }
+      if (hasAck()) {
+        hash = (37 * hash) + ACK_FIELD_NUMBER;
+        hash = (53 * hash) + getAck().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
     }
 
     public static co.willsalz.swim.generated.Gossip.Message parseFrom(
@@ -972,46 +1078,57 @@ public final class Gossip {
     }
     public static co.willsalz.swim.generated.Gossip.Message parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static co.willsalz.swim.generated.Gossip.Message parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Message parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static co.willsalz.swim.generated.Gossip.Message parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Message parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static co.willsalz.swim.generated.Gossip.Message parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(co.willsalz.swim.generated.Gossip.Message prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(co.willsalz.swim.generated.Gossip.Message prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1019,7 +1136,7 @@ public final class Gossip {
      * Protobuf type {@code swim.Message}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:swim.Message)
         co.willsalz.swim.generated.Gossip.MessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1027,7 +1144,7 @@ public final class Gossip {
         return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return co.willsalz.swim.generated.Gossip.internal_static_swim_Message_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1040,41 +1157,34 @@ public final class Gossip {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getPingFieldBuilder();
           getAckFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
-        type_ = co.willsalz.swim.generated.Gossip.Message.Type.PING;
+        type_ = 1;
         bitField0_ = (bitField0_ & ~0x00000001);
         if (pingBuilder_ == null) {
-          ping_ = co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance();
+          ping_ = null;
         } else {
           pingBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
         if (ackBuilder_ == null) {
-          ack_ = co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance();
+          ack_ = null;
         } else {
           ackBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -1123,6 +1233,32 @@ public final class Gossip {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof co.willsalz.swim.generated.Gossip.Message) {
           return mergeFrom((co.willsalz.swim.generated.Gossip.Message)other);
@@ -1143,13 +1279,13 @@ public final class Gossip {
         if (other.hasAck()) {
           mergeAck(other.getAck());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasType()) {
-          
           return false;
         }
         return true;
@@ -1164,7 +1300,7 @@ public final class Gossip {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (co.willsalz.swim.generated.Gossip.Message) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1174,7 +1310,7 @@ public final class Gossip {
       }
       private int bitField0_;
 
-      private co.willsalz.swim.generated.Gossip.Message.Type type_ = co.willsalz.swim.generated.Gossip.Message.Type.PING;
+      private int type_ = 1;
       /**
        * <code>required .swim.Message.Type type = 1;</code>
        */
@@ -1185,7 +1321,8 @@ public final class Gossip {
        * <code>required .swim.Message.Type type = 1;</code>
        */
       public co.willsalz.swim.generated.Gossip.Message.Type getType() {
-        return type_;
+        co.willsalz.swim.generated.Gossip.Message.Type result = co.willsalz.swim.generated.Gossip.Message.Type.valueOf(type_);
+        return result == null ? co.willsalz.swim.generated.Gossip.Message.Type.PING : result;
       }
       /**
        * <code>required .swim.Message.Type type = 1;</code>
@@ -1195,7 +1332,7 @@ public final class Gossip {
           throw new NullPointerException();
         }
         bitField0_ |= 0x00000001;
-        type_ = value;
+        type_ = value.getNumber();
         onChanged();
         return this;
       }
@@ -1204,13 +1341,13 @@ public final class Gossip {
        */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = co.willsalz.swim.generated.Gossip.Message.Type.PING;
+        type_ = 1;
         onChanged();
         return this;
       }
 
-      private co.willsalz.swim.generated.Gossip.Ping ping_ = co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
+      private co.willsalz.swim.generated.Gossip.Ping ping_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
           co.willsalz.swim.generated.Gossip.Ping, co.willsalz.swim.generated.Gossip.Ping.Builder, co.willsalz.swim.generated.Gossip.PingOrBuilder> pingBuilder_;
       /**
        * <code>optional .swim.Ping ping = 2;</code>
@@ -1223,7 +1360,7 @@ public final class Gossip {
        */
       public co.willsalz.swim.generated.Gossip.Ping getPing() {
         if (pingBuilder_ == null) {
-          return ping_;
+          return ping_ == null ? co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance() : ping_;
         } else {
           return pingBuilder_.getMessage();
         }
@@ -1264,6 +1401,7 @@ public final class Gossip {
       public Builder mergePing(co.willsalz.swim.generated.Gossip.Ping value) {
         if (pingBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              ping_ != null &&
               ping_ != co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance()) {
             ping_ =
               co.willsalz.swim.generated.Gossip.Ping.newBuilder(ping_).mergeFrom(value).buildPartial();
@@ -1282,7 +1420,7 @@ public final class Gossip {
        */
       public Builder clearPing() {
         if (pingBuilder_ == null) {
-          ping_ = co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance();
+          ping_ = null;
           onChanged();
         } else {
           pingBuilder_.clear();
@@ -1305,17 +1443,18 @@ public final class Gossip {
         if (pingBuilder_ != null) {
           return pingBuilder_.getMessageOrBuilder();
         } else {
-          return ping_;
+          return ping_ == null ?
+              co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance() : ping_;
         }
       }
       /**
        * <code>optional .swim.Ping ping = 2;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           co.willsalz.swim.generated.Gossip.Ping, co.willsalz.swim.generated.Gossip.Ping.Builder, co.willsalz.swim.generated.Gossip.PingOrBuilder> 
           getPingFieldBuilder() {
         if (pingBuilder_ == null) {
-          pingBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          pingBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               co.willsalz.swim.generated.Gossip.Ping, co.willsalz.swim.generated.Gossip.Ping.Builder, co.willsalz.swim.generated.Gossip.PingOrBuilder>(
                   getPing(),
                   getParentForChildren(),
@@ -1325,8 +1464,8 @@ public final class Gossip {
         return pingBuilder_;
       }
 
-      private co.willsalz.swim.generated.Gossip.Ack ack_ = co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
+      private co.willsalz.swim.generated.Gossip.Ack ack_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
           co.willsalz.swim.generated.Gossip.Ack, co.willsalz.swim.generated.Gossip.Ack.Builder, co.willsalz.swim.generated.Gossip.AckOrBuilder> ackBuilder_;
       /**
        * <code>optional .swim.Ack ack = 3;</code>
@@ -1339,7 +1478,7 @@ public final class Gossip {
        */
       public co.willsalz.swim.generated.Gossip.Ack getAck() {
         if (ackBuilder_ == null) {
-          return ack_;
+          return ack_ == null ? co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance() : ack_;
         } else {
           return ackBuilder_.getMessage();
         }
@@ -1380,6 +1519,7 @@ public final class Gossip {
       public Builder mergeAck(co.willsalz.swim.generated.Gossip.Ack value) {
         if (ackBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              ack_ != null &&
               ack_ != co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance()) {
             ack_ =
               co.willsalz.swim.generated.Gossip.Ack.newBuilder(ack_).mergeFrom(value).buildPartial();
@@ -1398,7 +1538,7 @@ public final class Gossip {
        */
       public Builder clearAck() {
         if (ackBuilder_ == null) {
-          ack_ = co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance();
+          ack_ = null;
           onChanged();
         } else {
           ackBuilder_.clear();
@@ -1421,17 +1561,18 @@ public final class Gossip {
         if (ackBuilder_ != null) {
           return ackBuilder_.getMessageOrBuilder();
         } else {
-          return ack_;
+          return ack_ == null ?
+              co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance() : ack_;
         }
       }
       /**
        * <code>optional .swim.Ack ack = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           co.willsalz.swim.generated.Gossip.Ack, co.willsalz.swim.generated.Gossip.Ack.Builder, co.willsalz.swim.generated.Gossip.AckOrBuilder> 
           getAckFieldBuilder() {
         if (ackBuilder_ == null) {
-          ackBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          ackBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               co.willsalz.swim.generated.Gossip.Ack, co.willsalz.swim.generated.Gossip.Ack.Builder, co.willsalz.swim.generated.Gossip.AckOrBuilder>(
                   getAck(),
                   getParentForChildren(),
@@ -1440,16 +1581,53 @@ public final class Gossip {
         }
         return ackBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
 
       // @@protoc_insertion_point(builder_scope:swim.Message)
     }
 
+    // @@protoc_insertion_point(class_scope:swim.Message)
+    private static final co.willsalz.swim.generated.Gossip.Message DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Message(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new co.willsalz.swim.generated.Gossip.Message();
     }
 
-    // @@protoc_insertion_point(class_scope:swim.Message)
+    public static co.willsalz.swim.generated.Gossip.Message getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Message>
+        PARSER = new com.google.protobuf.AbstractParser<Message>() {
+      public Message parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Message(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Message> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Message> getParserForType() {
+      return PARSER;
+    }
+
+    public co.willsalz.swim.generated.Gossip.Message getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface PingOrBuilder extends
@@ -1459,37 +1637,27 @@ public final class Gossip {
   /**
    * Protobuf type {@code swim.Ping}
    */
-  public static final class Ping extends
-      com.google.protobuf.GeneratedMessage implements
+  public  static final class Ping extends
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:swim.Ping)
       PingOrBuilder {
     // Use Ping.newBuilder() to construct.
-    private Ping(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Ping(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Ping(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Ping defaultInstance;
-    public static Ping getDefaultInstance() {
-      return defaultInstance;
+    private Ping() {
     }
 
-    public Ping getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
+    getUnknownFields() {
       return this.unknownFields;
     }
     private Ping(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1513,7 +1681,7 @@ public final class Gossip {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -1524,30 +1692,13 @@ public final class Gossip {
       return co.willsalz.swim.generated.Gossip.internal_static_swim_Ping_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return co.willsalz.swim.generated.Gossip.internal_static_swim_Ping_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               co.willsalz.swim.generated.Gossip.Ping.class, co.willsalz.swim.generated.Gossip.Ping.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Ping> PARSER =
-        new com.google.protobuf.AbstractParser<Ping>() {
-      public Ping parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Ping(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Ping> getParserForType() {
-      return PARSER;
-    }
-
-    private void initFields() {
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1560,26 +1711,45 @@ public final class Gossip {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof co.willsalz.swim.generated.Gossip.Ping)) {
+        return super.equals(obj);
+      }
+      co.willsalz.swim.generated.Gossip.Ping other = (co.willsalz.swim.generated.Gossip.Ping) obj;
+
+      boolean result = true;
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
     }
 
     public static co.willsalz.swim.generated.Gossip.Ping parseFrom(
@@ -1605,46 +1775,57 @@ public final class Gossip {
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static co.willsalz.swim.generated.Gossip.Ping parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(co.willsalz.swim.generated.Gossip.Ping prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(co.willsalz.swim.generated.Gossip.Ping prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1652,7 +1833,7 @@ public final class Gossip {
      * Protobuf type {@code swim.Ping}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:swim.Ping)
         co.willsalz.swim.generated.Gossip.PingOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1660,7 +1841,7 @@ public final class Gossip {
         return co.willsalz.swim.generated.Gossip.internal_static_swim_Ping_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return co.willsalz.swim.generated.Gossip.internal_static_swim_Ping_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1673,25 +1854,18 @@ public final class Gossip {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -1717,6 +1891,32 @@ public final class Gossip {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof co.willsalz.swim.generated.Gossip.Ping) {
           return mergeFrom((co.willsalz.swim.generated.Gossip.Ping)other);
@@ -1728,7 +1928,8 @@ public final class Gossip {
 
       public Builder mergeFrom(co.willsalz.swim.generated.Gossip.Ping other) {
         if (other == co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
         return this;
       }
 
@@ -1745,7 +1946,7 @@ public final class Gossip {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (co.willsalz.swim.generated.Gossip.Ping) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1753,16 +1954,53 @@ public final class Gossip {
         }
         return this;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
 
       // @@protoc_insertion_point(builder_scope:swim.Ping)
     }
 
+    // @@protoc_insertion_point(class_scope:swim.Ping)
+    private static final co.willsalz.swim.generated.Gossip.Ping DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Ping(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new co.willsalz.swim.generated.Gossip.Ping();
     }
 
-    // @@protoc_insertion_point(class_scope:swim.Ping)
+    public static co.willsalz.swim.generated.Gossip.Ping getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Ping>
+        PARSER = new com.google.protobuf.AbstractParser<Ping>() {
+      public Ping parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Ping(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Ping> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Ping> getParserForType() {
+      return PARSER;
+    }
+
+    public co.willsalz.swim.generated.Gossip.Ping getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface AckOrBuilder extends
@@ -1772,37 +2010,27 @@ public final class Gossip {
   /**
    * Protobuf type {@code swim.Ack}
    */
-  public static final class Ack extends
-      com.google.protobuf.GeneratedMessage implements
+  public  static final class Ack extends
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:swim.Ack)
       AckOrBuilder {
     // Use Ack.newBuilder() to construct.
-    private Ack(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Ack(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Ack(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Ack defaultInstance;
-    public static Ack getDefaultInstance() {
-      return defaultInstance;
+    private Ack() {
     }
 
-    public Ack getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
+    getUnknownFields() {
       return this.unknownFields;
     }
     private Ack(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1826,7 +2054,7 @@ public final class Gossip {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -1837,30 +2065,13 @@ public final class Gossip {
       return co.willsalz.swim.generated.Gossip.internal_static_swim_Ack_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return co.willsalz.swim.generated.Gossip.internal_static_swim_Ack_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               co.willsalz.swim.generated.Gossip.Ack.class, co.willsalz.swim.generated.Gossip.Ack.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Ack> PARSER =
-        new com.google.protobuf.AbstractParser<Ack>() {
-      public Ack parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Ack(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Ack> getParserForType() {
-      return PARSER;
-    }
-
-    private void initFields() {
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1873,26 +2084,45 @@ public final class Gossip {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof co.willsalz.swim.generated.Gossip.Ack)) {
+        return super.equals(obj);
+      }
+      co.willsalz.swim.generated.Gossip.Ack other = (co.willsalz.swim.generated.Gossip.Ack) obj;
+
+      boolean result = true;
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
     }
 
     public static co.willsalz.swim.generated.Gossip.Ack parseFrom(
@@ -1918,46 +2148,57 @@ public final class Gossip {
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static co.willsalz.swim.generated.Gossip.Ack parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(co.willsalz.swim.generated.Gossip.Ack prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(co.willsalz.swim.generated.Gossip.Ack prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1965,7 +2206,7 @@ public final class Gossip {
      * Protobuf type {@code swim.Ack}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:swim.Ack)
         co.willsalz.swim.generated.Gossip.AckOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1973,7 +2214,7 @@ public final class Gossip {
         return co.willsalz.swim.generated.Gossip.internal_static_swim_Ack_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return co.willsalz.swim.generated.Gossip.internal_static_swim_Ack_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1986,25 +2227,18 @@ public final class Gossip {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -2030,6 +2264,32 @@ public final class Gossip {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof co.willsalz.swim.generated.Gossip.Ack) {
           return mergeFrom((co.willsalz.swim.generated.Gossip.Ack)other);
@@ -2041,7 +2301,8 @@ public final class Gossip {
 
       public Builder mergeFrom(co.willsalz.swim.generated.Gossip.Ack other) {
         if (other == co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
         return this;
       }
 
@@ -2058,7 +2319,7 @@ public final class Gossip {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (co.willsalz.swim.generated.Gossip.Ack) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -2066,44 +2327,81 @@ public final class Gossip {
         }
         return this;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
 
       // @@protoc_insertion_point(builder_scope:swim.Ack)
     }
 
+    // @@protoc_insertion_point(class_scope:swim.Ack)
+    private static final co.willsalz.swim.generated.Gossip.Ack DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Ack(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new co.willsalz.swim.generated.Gossip.Ack();
     }
 
-    // @@protoc_insertion_point(class_scope:swim.Ack)
+    public static co.willsalz.swim.generated.Gossip.Ack getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Ack>
+        PARSER = new com.google.protobuf.AbstractParser<Ack>() {
+      public Ack parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Ack(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Ack> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Ack> getParserForType() {
+      return PARSER;
+    }
+
+    public co.willsalz.swim.generated.Gossip.Ack getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_swim_Message_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_swim_Message_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_swim_Message_Peer_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_swim_Message_Peer_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_swim_Ping_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_swim_Ping_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_swim_Ack_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_swim_Ack_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static com.google.protobuf.Descriptors.FileDescriptor
+  private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -2130,25 +2428,25 @@ public final class Gossip {
     internal_static_swim_Message_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_swim_Message_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_swim_Message_descriptor,
         new java.lang.String[] { "Type", "Ping", "Ack", });
     internal_static_swim_Message_Peer_descriptor =
       internal_static_swim_Message_descriptor.getNestedTypes().get(0);
     internal_static_swim_Message_Peer_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_swim_Message_Peer_descriptor,
         new java.lang.String[] { "Host", "Port", });
     internal_static_swim_Ping_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_swim_Ping_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_swim_Ping_descriptor,
         new java.lang.String[] { });
     internal_static_swim_Ack_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_swim_Ack_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_swim_Ack_descriptor,
         new java.lang.String[] { });
   }

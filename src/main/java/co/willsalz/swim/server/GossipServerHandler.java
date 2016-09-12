@@ -1,32 +1,36 @@
 package co.willsalz.swim.server;
 
+import java.net.InetSocketAddress;
+
 import co.willsalz.swim.generated.Gossip;
-import com.google.protobuf.MessageLiteOrBuilder;
+import io.netty.channel.AddressedEnvelope;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.DefaultAddressedEnvelope;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.channel.socket.DatagramPacket;
 
-public class GossipServerHandler extends SimpleChannelInboundHandler<DatagramPacket> {
+public class GossipServerHandler extends SimpleChannelInboundHandler<AddressedEnvelope<Gossip.Message, InetSocketAddress>> {
 
     @Override
-    public void channelRead0(ChannelHandlerContext ctx, DatagramPacket packet) throws Exception {
-        System.err.println(packet);
+    public void channelRead0(ChannelHandlerContext ctx, AddressedEnvelope<Gossip.Message, InetSocketAddress> msg) throws Exception {
+        System.err.println(msg);
 
-        final MessageLiteOrBuilder res = Gossip.Message.newBuilder()
-            .setType(Gossip.Message.Type.ACK)
-            .setAck(Gossip.Ack.newBuilder().build())
-            .build();
-
-        ctx.writeAndFlush(
-            new DefaultAddressedEnvelope<>(
-                res,
-                packet.sender(),
-                packet.recipient()
-            )
-        );
+        switch (msg.content().getType()) {
+            case PING:
+                ctx.writeAndFlush(
+                    new DefaultAddressedEnvelope<>(
+                        Gossip.Message.newBuilder()
+                            .setType(Gossip.Message.Type.ACK)
+                            .setAck(Gossip.Ack.newBuilder().build())
+                            .build(),
+                        msg.sender(),
+                        ctx.channel().localAddress()
+                    )
+                );
+                break;
+            case ACK:
+                break;
+        }
     }
-
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
