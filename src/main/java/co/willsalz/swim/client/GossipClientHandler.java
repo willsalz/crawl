@@ -1,14 +1,14 @@
 package co.willsalz.swim.client;
 
+import co.willsalz.swim.generated.Gossip;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.channel.socket.DatagramPacket;
 
-public class GossipClientHandler extends SimpleChannelInboundHandler<DatagramPacket> {
+public class GossipClientHandler extends SimpleChannelInboundHandler<Gossip.Message> {
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, DatagramPacket msg) throws Exception {
-        System.err.println(msg);
+    protected void channelRead0(ChannelHandlerContext ctx, Gossip.Message msg) throws Exception {
+        System.err.println(String.format("Got %s", msg));
         ctx.close();
     }
 
