@@ -13,12 +13,6 @@ message Message {
     required Type type = 1;
     optional Ping ping = 2;
     optional Ack ack = 3;
-
-    message Peer {
-        required string host = 1;
-        required int32 port = 2;
-    }
-
 }
 
 message Ping {
@@ -28,4 +22,3 @@ message Ping {
 message Ack {
 
 }
-
