@@ -1,6 +1,8 @@
 package co.willsalz.swim.client;
 
 import java.net.InetSocketAddress;
+import java.util.List;
+import java.util.Random;
 
 import co.willsalz.swim.generated.Gossip;
 import io.netty.channel.AddressedEnvelope;
@@ -16,7 +18,13 @@ import org.slf4j.LoggerFactory;
 public class GossipHandler extends SimpleChannelInboundHandler<AddressedEnvelope<Gossip.Message, InetSocketAddress>> {
 
     private final Logger logger = LoggerFactory.getLogger("gossip-handler");
+    private final List<InetSocketAddress> peers;
+    private final Random rng = new Random();
     private Channel channel;
+
+    public GossipHandler(List<InetSocketAddress> peers) {
+        this.peers = peers;
+    }
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, AddressedEnvelope<Gossip.Message, InetSocketAddress> msg) throws Exception {
@@ -38,8 +46,6 @@ public class GossipHandler extends SimpleChannelInboundHandler<AddressedEnvelope
                 break;
             case ACK:
                 logger.info("Ack: {}", msg.content().getAck());
-                final ChannelFuture closeFuture = ctx.close();
-                closeFuture.addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
                 break;
             default:
                 logger.error("Unknown message: {}", msg.content());
@@ -57,14 +63,18 @@ public class GossipHandler extends SimpleChannelInboundHandler<AddressedEnvelope
         this.channel = ctx.channel();
     }
 
-    public ChannelFuture ping(final InetSocketAddress recipient) {
+    public ChannelFuture ping() {
+
+        final InetSocketAddress peer = peers.get(rng.nextInt(peers.size()));
+        logger.info("Pinging {} from {}", peer, channel.localAddress());
+
         return channel.writeAndFlush(
             new DefaultAddressedEnvelope<>(
                 Gossip.Message.newBuilder()
                     .setType(Gossip.Message.Type.PING)
                     .setPing(Gossip.Ping.newBuilder().build())
                     .build(),
-                recipient,
+                peer,
                 channel.localAddress()
             )
         );
