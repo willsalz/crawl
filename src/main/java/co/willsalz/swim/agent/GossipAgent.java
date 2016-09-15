@@ -1,9 +1,15 @@
-package co.willsalz.swim.client;
+package co.willsalz.swim.agent;
 
 import java.net.InetSocketAddress;
-import java.util.ArrayList;
+import java.time.Duration;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
+import co.willsalz.swim.peers.Peer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.Channel;
@@ -12,16 +18,22 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioDatagramChannel;
+import io.netty.util.HashedWheelTimer;
+import io.netty.util.Timer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public final class GossipAgent implements Runnable {
 
     private static final Logger logger = LoggerFactory.getLogger("gossip-client");
+    private static final Duration PROTOCOL_PERIOD = Duration.ofSeconds(1);
+
     private final Channel channel;
     private final GossipHandler handler;
     private final Integer port;
-    private final List<InetSocketAddress> peers = new ArrayList<>();
+    private final Set<Peer> peers = new HashSet<>();
+    private final Timer timer = new HashedWheelTimer();
+    private final Random rng = new Random(System.currentTimeMillis());
 
     public GossipAgent(final List<InetSocketAddress> peers) throws InterruptedException {
 
@@ -43,7 +55,15 @@ public final class GossipAgent implements Runnable {
     }
 
     public ChannelFuture ping() {
-        return handler.ping();
+        final List<Peer> peerList = peers.stream().collect(Collectors.toList());
+        final Peer peer = peerList.get(rng.nextInt(peers.size()));
+
+        timer.newTimeout(
+            new PingTimeout(this, peer),
+            PROTOCOL_PERIOD.toMillis(),
+            TimeUnit.MILLISECONDS
+        );
+        return handler.ping(peer.getAddress());
     }
 
     @Override
@@ -56,4 +76,5 @@ public final class GossipAgent implements Runnable {
             channel.eventLoop().shutdownGracefully();
         }
     }
+
 }

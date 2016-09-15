@@ -1,10 +1,9 @@
-package co.willsalz.swim.client;
+package co.willsalz.swim.agent;
 
 import java.net.InetSocketAddress;
-import java.util.List;
-import java.util.Random;
 
 import co.willsalz.swim.generated.Gossip;
+import co.willsalz.swim.peers.Peer;
 import io.netty.channel.AddressedEnvelope;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -18,12 +17,11 @@ import org.slf4j.LoggerFactory;
 public class GossipHandler extends SimpleChannelInboundHandler<AddressedEnvelope<Gossip.Message, InetSocketAddress>> {
 
     private final Logger logger = LoggerFactory.getLogger("gossip-handler");
-    private final List<InetSocketAddress> peers;
-    private final Random rng = new Random();
+    private final GossipAgent agent;
     private Channel channel;
 
-    public GossipHandler(List<InetSocketAddress> peers) {
-        this.peers = peers;
+    public GossipHandler(final GossipAgent agent) {
+        this.agent = agent;
     }
 
     @Override
@@ -63,9 +61,8 @@ public class GossipHandler extends SimpleChannelInboundHandler<AddressedEnvelope
         this.channel = ctx.channel();
     }
 
-    public ChannelFuture ping() {
+    public ChannelFuture ping(final InetSocketAddress peer) {
 
-        final InetSocketAddress peer = peers.get(rng.nextInt(peers.size()));
         logger.info("Pinging {} from {}", peer, channel.localAddress());
 
         return channel.writeAndFlush(
@@ -79,5 +76,8 @@ public class GossipHandler extends SimpleChannelInboundHandler<AddressedEnvelope
             )
         );
 
+    }
+
+    public void suspect(Peer peer) {
     }
 }

@@ -1,4 +1,4 @@
-package co.willsalz.swim.client;
+package co.willsalz.swim.agent;
 
 import java.net.InetSocketAddress;
 import java.util.List;

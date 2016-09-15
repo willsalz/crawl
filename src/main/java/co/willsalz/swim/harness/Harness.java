@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import co.willsalz.swim.client.GossipAgent;
+import co.willsalz.swim.agent.GossipAgent;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.util.internal.logging.InternalLoggerFactory;
