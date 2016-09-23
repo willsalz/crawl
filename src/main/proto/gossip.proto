@@ -4,15 +4,28 @@ option java_package = "co.willsalz.swim.generated";
 option java_outer_classname = "Gossip";
 option optimize_for = SPEED;
 
+
 message Message {
     enum Type {
         PING = 1;
         ACK = 2;
+        PING_REQ = 3;
     }
 
     required Type type = 1;
     optional Ping ping = 2;
     optional Ack ack = 3;
+    optional PingReq pingReq = 4;
+}
+
+message Peer {
+    enum State {
+        Alive = 1;
+        Suspect = 2;
+        Dead = 3;
+    }
+    required string address = 1;
+    required int32 port = 2;
 }
 
 message Ping {
@@ -20,7 +33,7 @@ message Ping {
 }
 
 message PingReq {
-
+    required Peer target = 1;
 }
 
 message Ack {

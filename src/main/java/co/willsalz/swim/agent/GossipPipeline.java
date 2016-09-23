@@ -1,8 +1,5 @@
 package co.willsalz.swim.agent;
 
-import java.net.InetSocketAddress;
-import java.util.List;
-
 import co.willsalz.swim.generated.Gossip;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.DatagramChannel;
@@ -13,10 +10,10 @@ import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.logging.LoggingHandler;
 
 public class GossipPipeline extends ChannelInitializer<DatagramChannel> {
-    private final List<InetSocketAddress> peers;
+    private final GossipAgent agent;
 
-    public GossipPipeline(List<InetSocketAddress> peers) {
-        this.peers = peers;
+    public GossipPipeline(GossipAgent agent) {
+        this.agent = agent;
     }
 
     @Override
@@ -24,6 +21,6 @@ public class GossipPipeline extends ChannelInitializer<DatagramChannel> {
         ch.pipeline().addLast("loggingHandler", new LoggingHandler());
         ch.pipeline().addLast("udpDecoder", new EnvelopingDatagramPacketDecoder(new ProtobufDecoder(Gossip.Message.getDefaultInstance())));
         ch.pipeline().addLast("udpEncoder", new DatagramPacketEncoder<>(new ProtobufEncoder()));
-        ch.pipeline().addLast("clientHandler", new GossipHandler(peers));
+        ch.pipeline().addLast("clientHandler", new GossipHandler(agent));
     }
 }

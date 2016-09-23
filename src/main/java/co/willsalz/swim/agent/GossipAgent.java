@@ -2,18 +2,14 @@ package co.willsalz.swim.agent;
 
 import java.net.InetSocketAddress;
 import java.time.Duration;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
-import co.willsalz.swim.peers.Peer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -26,14 +22,15 @@ import org.slf4j.LoggerFactory;
 public final class GossipAgent implements Runnable {
 
     private static final Logger logger = LoggerFactory.getLogger("gossip-client");
-    private static final Duration PROTOCOL_PERIOD = Duration.ofSeconds(1);
+    private static final Duration PROTOCOL_PERIOD = Duration.ofMillis(100);
+    private static final int NUM_PROXIES = 3;
 
     private final Channel channel;
     private final GossipHandler handler;
     private final Integer port;
-    private final Set<Peer> peers = new HashSet<>();
-    private final Timer timer = new HashedWheelTimer();
     private final Random rng = new Random(System.currentTimeMillis());
+    private final Peers peers;
+    private final Timer timer = new HashedWheelTimer();
 
     public GossipAgent(final List<InetSocketAddress> peers) throws InterruptedException {
 
@@ -43,27 +40,43 @@ public final class GossipAgent implements Runnable {
             .channel(NioDatagramChannel.class)
             .option(ChannelOption.SO_BROADCAST, true)
             .option(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
-            .handler(new GossipPipeline(peers));
+            .handler(new GossipPipeline(this));
 
         this.channel = b.bind(0).sync().channel();
         this.handler = channel.pipeline().get(GossipHandler.class);
         this.port = ((InetSocketAddress) channel.localAddress()).getPort();
+        this.peers = new Peers(peers, rng);
     }
 
-    public Integer getPort() {
+    public Peers peers() {
+        return peers;
+    }
+
+    public Integer port() {
         return port;
     }
 
-    public ChannelFuture ping() {
-        final List<Peer> peerList = peers.stream().collect(Collectors.toList());
-        final Peer peer = peerList.get(rng.nextInt(peers.size()));
+    public void ping() {
+        final Optional<InetSocketAddress> peer = this.peers.choice();
+        if (peer.isPresent()) {
+            timer.newTimeout(
+                new PingTimeout(this, peer.get(), logger),
+                PROTOCOL_PERIOD.toMillis(),
+                TimeUnit.MILLISECONDS
+            );
 
-        timer.newTimeout(
-            new PingTimeout(this, peer),
-            PROTOCOL_PERIOD.toMillis(),
-            TimeUnit.MILLISECONDS
-        );
-        return handler.ping(peer.getAddress());
+            handler.sendPing(peer.get());
+        }
+    }
+
+    public void pingReq(final InetSocketAddress target) {
+        final List<InetSocketAddress> peers = this.peers.sample(NUM_PROXIES);
+        peers.remove(target);
+        if (!peers.isEmpty()) {
+            for (final InetSocketAddress peer : peers) {
+                handler.sendPingReq(peer, target);
+            }
+        }
     }
 
     @Override
@@ -75,6 +88,10 @@ public final class GossipAgent implements Runnable {
         } finally {
             channel.eventLoop().shutdownGracefully();
         }
+    }
+
+    public Integer getPort() {
+        return port;
     }
 
 }

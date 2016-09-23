@@ -28,30 +28,43 @@ public final class Gossip {
     co.willsalz.swim.generated.Gossip.Message.Type getType();
 
     /**
-     * <code>optional .swim.Ping ping = 2;</code>
+     * <code>optional .swim.Ping handlePing = 2;</code>
      */
     boolean hasPing();
     /**
-     * <code>optional .swim.Ping ping = 2;</code>
+     * <code>optional .swim.Ping handlePing = 2;</code>
      */
     co.willsalz.swim.generated.Gossip.Ping getPing();
     /**
-     * <code>optional .swim.Ping ping = 2;</code>
+     * <code>optional .swim.Ping handlePing = 2;</code>
      */
     co.willsalz.swim.generated.Gossip.PingOrBuilder getPingOrBuilder();
 
     /**
-     * <code>optional .swim.Ack ack = 3;</code>
+     * <code>optional .swim.Ack handleAck = 3;</code>
      */
     boolean hasAck();
     /**
-     * <code>optional .swim.Ack ack = 3;</code>
+     * <code>optional .swim.Ack handleAck = 3;</code>
      */
     co.willsalz.swim.generated.Gossip.Ack getAck();
     /**
-     * <code>optional .swim.Ack ack = 3;</code>
+     * <code>optional .swim.Ack handleAck = 3;</code>
      */
     co.willsalz.swim.generated.Gossip.AckOrBuilder getAckOrBuilder();
+
+    /**
+     * <code>optional .swim.PingReq handlePingReq = 4;</code>
+     */
+    boolean hasPingReq();
+    /**
+     * <code>optional .swim.PingReq handlePingReq = 4;</code>
+     */
+    co.willsalz.swim.generated.Gossip.PingReq getPingReq();
+    /**
+     * <code>optional .swim.PingReq handlePingReq = 4;</code>
+     */
+    co.willsalz.swim.generated.Gossip.PingReqOrBuilder getPingReqOrBuilder();
   }
   /**
    * Protobuf type {@code swim.Message}
@@ -133,6 +146,19 @@ public final class Gossip {
               bitField0_ |= 0x00000004;
               break;
             }
+            case 34: {
+              co.willsalz.swim.generated.Gossip.PingReq.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = pingReq_.toBuilder();
+              }
+              pingReq_ = input.readMessage(co.willsalz.swim.generated.Gossip.PingReq.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(pingReq_);
+                pingReq_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -170,6 +196,10 @@ public final class Gossip {
        * <code>ACK = 2;</code>
        */
       ACK(2),
+      /**
+       * <code>PING_REQ = 3;</code>
+       */
+      PING_REQ(3),
       ;
 
       /**
@@ -180,6 +210,10 @@ public final class Gossip {
        * <code>ACK = 2;</code>
        */
       public static final int ACK_VALUE = 2;
+      /**
+       * <code>PING_REQ = 3;</code>
+       */
+      public static final int PING_REQ_VALUE = 3;
 
 
       public final int getNumber() {
@@ -198,6 +232,7 @@ public final class Gossip {
         switch (value) {
           case 1: return PING;
           case 2: return ACK;
+          case 3: return PING_REQ;
           default: return null;
         }
       }
@@ -267,19 +302,19 @@ public final class Gossip {
     public static final int PING_FIELD_NUMBER = 2;
     private co.willsalz.swim.generated.Gossip.Ping ping_;
     /**
-     * <code>optional .swim.Ping ping = 2;</code>
+     * <code>optional .swim.Ping handlePing = 2;</code>
      */
     public boolean hasPing() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .swim.Ping ping = 2;</code>
+     * <code>optional .swim.Ping handlePing = 2;</code>
      */
     public co.willsalz.swim.generated.Gossip.Ping getPing() {
       return ping_ == null ? co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance() : ping_;
     }
     /**
-     * <code>optional .swim.Ping ping = 2;</code>
+     * <code>optional .swim.Ping handlePing = 2;</code>
      */
     public co.willsalz.swim.generated.Gossip.PingOrBuilder getPingOrBuilder() {
       return ping_ == null ? co.willsalz.swim.generated.Gossip.Ping.getDefaultInstance() : ping_;
@@ -288,22 +323,43 @@ public final class Gossip {
     public static final int ACK_FIELD_NUMBER = 3;
     private co.willsalz.swim.generated.Gossip.Ack ack_;
     /**
-     * <code>optional .swim.Ack ack = 3;</code>
+     * <code>optional .swim.Ack handleAck = 3;</code>
      */
     public boolean hasAck() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional .swim.Ack ack = 3;</code>
+     * <code>optional .swim.Ack handleAck = 3;</code>
      */
     public co.willsalz.swim.generated.Gossip.Ack getAck() {
       return ack_ == null ? co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance() : ack_;
     }
     /**
-     * <code>optional .swim.Ack ack = 3;</code>
+     * <code>optional .swim.Ack handleAck = 3;</code>
      */
     public co.willsalz.swim.generated.Gossip.AckOrBuilder getAckOrBuilder() {
       return ack_ == null ? co.willsalz.swim.generated.Gossip.Ack.getDefaultInstance() : ack_;
+    }
+
+    public static final int PINGREQ_FIELD_NUMBER = 4;
+    private co.willsalz.swim.generated.Gossip.PingReq pingReq_;
+    /**
+     * <code>optional .swim.PingReq handlePingReq = 4;</code>
+     */
+    public boolean hasPingReq() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional .swim.PingReq handlePingReq = 4;</code>
+     */
+    public co.willsalz.swim.generated.Gossip.PingReq getPingReq() {
+      return pingReq_ == null ? co.willsalz.swim.generated.Gossip.PingReq.getDefaultInstance() : pingReq_;
+    }
+    /**
+     * <code>optional .swim.PingReq handlePingReq = 4;</code>
+     */
+    public co.willsalz.swim.generated.Gossip.PingReqOrBuilder getPingReqOrBuilder() {
+      return pingReq_ == null ? co.willsalz.swim.generated.Gossip.PingReq.getDefaultInstance() : pingReq_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -315,6 +371,12 @@ public final class Gossip {
       if (!hasType()) {
         memoizedIsInitialized = 0;
         return false;
+      }
+      if (hasPingReq()) {
+        if (!getPingReq().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -330,6 +392,9 @@ public final class Gossip {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(3, getAck());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, getPingReq());
       }
       unknownFields.writeTo(output);
     }
@@ -350,6 +415,10 @@ public final class Gossip {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getAck());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getPingReq());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -382,6 +451,11 @@ public final class Gossip {
         result = result && getAck()
             .equals(other.getAck());
       }
+      result = result && (hasPingReq() == other.hasPingReq());
+      if (hasPingReq()) {
+        result = result && getPingReq()
+            .equals(other.getPingReq());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -404,6 +478,10 @@ public final class Gossip {
       if (hasAck()) {
         hash = (37 * hash) + ACK_FIELD_NUMBER;
         hash = (53 * hash) + getAck().hashCode();
+      }
+      if (hasPingReq()) {
+        hash = (37 * hash) + PINGREQ_FIELD_NUMBER;
+        hash = (53 * hash) + getPingReq().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -521,6 +599,7 @@ public final class Gossip {
                 .alwaysUseFieldBuilders) {
           getPingFieldBuilder();
           getAckFieldBuilder();
+          getPingReqFieldBuilder();
         }
       }
       public Builder clear() {
@@ -539,6 +618,12 @@ public final class Gossip {
           ackBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
+        if (pingReqBuilder_ == null) {
+          pingReq_ = null;
+        } else {
+          pingReqBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -582,6 +667,14 @@ public final class Gossip {
           result.ack_ = ack_;
         } else {
           result.ack_ = ackBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (pingReqBuilder_ == null) {
+          result.pingReq_ = pingReq_;
+        } else {
+          result.pingReq_ = pingReqBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -634,6 +727,9 @@ public final class Gossip {
         if (other.hasAck()) {
           mergeAck(other.getAck());
         }
+        if (other.hasPingReq()) {
+          mergePingReq(other.getPingReq());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -642,6 +738,11 @@ public final class Gossip {
       public final boolean isInitialized() {
         if (!hasType()) {
           return false;
+        }
+        if (hasPingReq()) {
+          if (!getPingReq().isInitialized()) {
+            return false;
+          }
         }
         return true;
       }
@@ -705,13 +806,13 @@ public final class Gossip {
       private com.google.protobuf.SingleFieldBuilderV3<
           co.willsalz.swim.generated.Gossip.Ping, co.willsalz.swim.generated.Gossip.Ping.Builder, co.willsalz.swim.generated.Gossip.PingOrBuilder> pingBuilder_;
       /**
-       * <code>optional .swim.Ping ping = 2;</code>
+       * <code>optional .swim.Ping handlePing = 2;</code>
        */
       public boolean hasPing() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .swim.Ping ping = 2;</code>
+       * <code>optional .swim.Ping handlePing = 2;</code>
        */
       public co.willsalz.swim.generated.Gossip.Ping getPing() {
         if (pingBuilder_ == null) {
@@ -721,7 +822,7 @@ public final class Gossip {
         }
       }
       /**
-       * <code>optional .swim.Ping ping = 2;</code>
+       * <code>optional .swim.Ping handlePing = 2;</code>
        */
       public Builder setPing(co.willsalz.swim.generated.Gossip.Ping value) {
         if (pingBuilder_ == null) {
@@ -737,7 +838,7 @@ public final class Gossip {
         return this;
       }
       /**
-       * <code>optional .swim.Ping ping = 2;</code>
+       * <code>optional .swim.Ping handlePing = 2;</code>
        */
       public Builder setPing(
           co.willsalz.swim.generated.Gossip.Ping.Builder builderForValue) {
@@ -751,7 +852,7 @@ public final class Gossip {
         return this;
       }
       /**
-       * <code>optional .swim.Ping ping = 2;</code>
+       * <code>optional .swim.Ping handlePing = 2;</code>
        */
       public Builder mergePing(co.willsalz.swim.generated.Gossip.Ping value) {
         if (pingBuilder_ == null) {
@@ -771,7 +872,7 @@ public final class Gossip {
         return this;
       }
       /**
-       * <code>optional .swim.Ping ping = 2;</code>
+       * <code>optional .swim.Ping handlePing = 2;</code>
        */
       public Builder clearPing() {
         if (pingBuilder_ == null) {
@@ -784,7 +885,7 @@ public final class Gossip {
         return this;
       }
       /**
-       * <code>optional .swim.Ping ping = 2;</code>
+       * <code>optional .swim.Ping handlePing = 2;</code>
        */
       public co.willsalz.swim.generated.Gossip.Ping.Builder getPingBuilder() {
         bitField0_ |= 0x00000002;
@@ -792,7 +893,7 @@ public final class Gossip {
         return getPingFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .swim.Ping ping = 2;</code>
+       * <code>optional .swim.Ping handlePing = 2;</code>
        */
       public co.willsalz.swim.generated.Gossip.PingOrBuilder getPingOrBuilder() {
         if (pingBuilder_ != null) {
@@ -803,7 +904,7 @@ public final class Gossip {
         }
       }
       /**
-       * <code>optional .swim.Ping ping = 2;</code>
+       * <code>optional .swim.Ping handlePing = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           co.willsalz.swim.generated.Gossip.Ping, co.willsalz.swim.generated.Gossip.Ping.Builder, co.willsalz.swim.generated.Gossip.PingOrBuilder> 
@@ -823,13 +924,13 @@ public final class Gossip {
       private com.google.protobuf.SingleFieldBuilderV3<
           co.willsalz.swim.generated.Gossip.Ack, co.willsalz.swim.generated.Gossip.Ack.Builder, co.willsalz.swim.generated.Gossip.AckOrBuilder> ackBuilder_;
       /**
-       * <code>optional .swim.Ack ack = 3;</code>
+       * <code>optional .swim.Ack handleAck = 3;</code>
        */
       public boolean hasAck() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional .swim.Ack ack = 3;</code>
+       * <code>optional .swim.Ack handleAck = 3;</code>
        */
       public co.willsalz.swim.generated.Gossip.Ack getAck() {
         if (ackBuilder_ == null) {
@@ -839,7 +940,7 @@ public final class Gossip {
         }
       }
       /**
-       * <code>optional .swim.Ack ack = 3;</code>
+       * <code>optional .swim.Ack handleAck = 3;</code>
        */
       public Builder setAck(co.willsalz.swim.generated.Gossip.Ack value) {
         if (ackBuilder_ == null) {
@@ -855,7 +956,7 @@ public final class Gossip {
         return this;
       }
       /**
-       * <code>optional .swim.Ack ack = 3;</code>
+       * <code>optional .swim.Ack handleAck = 3;</code>
        */
       public Builder setAck(
           co.willsalz.swim.generated.Gossip.Ack.Builder builderForValue) {
@@ -869,7 +970,7 @@ public final class Gossip {
         return this;
       }
       /**
-       * <code>optional .swim.Ack ack = 3;</code>
+       * <code>optional .swim.Ack handleAck = 3;</code>
        */
       public Builder mergeAck(co.willsalz.swim.generated.Gossip.Ack value) {
         if (ackBuilder_ == null) {
@@ -889,7 +990,7 @@ public final class Gossip {
         return this;
       }
       /**
-       * <code>optional .swim.Ack ack = 3;</code>
+       * <code>optional .swim.Ack handleAck = 3;</code>
        */
       public Builder clearAck() {
         if (ackBuilder_ == null) {
@@ -902,7 +1003,7 @@ public final class Gossip {
         return this;
       }
       /**
-       * <code>optional .swim.Ack ack = 3;</code>
+       * <code>optional .swim.Ack handleAck = 3;</code>
        */
       public co.willsalz.swim.generated.Gossip.Ack.Builder getAckBuilder() {
         bitField0_ |= 0x00000004;
@@ -910,7 +1011,7 @@ public final class Gossip {
         return getAckFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .swim.Ack ack = 3;</code>
+       * <code>optional .swim.Ack handleAck = 3;</code>
        */
       public co.willsalz.swim.generated.Gossip.AckOrBuilder getAckOrBuilder() {
         if (ackBuilder_ != null) {
@@ -921,7 +1022,7 @@ public final class Gossip {
         }
       }
       /**
-       * <code>optional .swim.Ack ack = 3;</code>
+       * <code>optional .swim.Ack handleAck = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           co.willsalz.swim.generated.Gossip.Ack, co.willsalz.swim.generated.Gossip.Ack.Builder, co.willsalz.swim.generated.Gossip.AckOrBuilder> 
@@ -935,6 +1036,124 @@ public final class Gossip {
           ack_ = null;
         }
         return ackBuilder_;
+      }
+
+      private co.willsalz.swim.generated.Gossip.PingReq pingReq_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          co.willsalz.swim.generated.Gossip.PingReq, co.willsalz.swim.generated.Gossip.PingReq.Builder, co.willsalz.swim.generated.Gossip.PingReqOrBuilder> pingReqBuilder_;
+      /**
+       * <code>optional .swim.PingReq handlePingReq = 4;</code>
+       */
+      public boolean hasPingReq() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional .swim.PingReq handlePingReq = 4;</code>
+       */
+      public co.willsalz.swim.generated.Gossip.PingReq getPingReq() {
+        if (pingReqBuilder_ == null) {
+          return pingReq_ == null ? co.willsalz.swim.generated.Gossip.PingReq.getDefaultInstance() : pingReq_;
+        } else {
+          return pingReqBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .swim.PingReq handlePingReq = 4;</code>
+       */
+      public Builder setPingReq(co.willsalz.swim.generated.Gossip.PingReq value) {
+        if (pingReqBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          pingReq_ = value;
+          onChanged();
+        } else {
+          pingReqBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .swim.PingReq handlePingReq = 4;</code>
+       */
+      public Builder setPingReq(
+          co.willsalz.swim.generated.Gossip.PingReq.Builder builderForValue) {
+        if (pingReqBuilder_ == null) {
+          pingReq_ = builderForValue.build();
+          onChanged();
+        } else {
+          pingReqBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .swim.PingReq handlePingReq = 4;</code>
+       */
+      public Builder mergePingReq(co.willsalz.swim.generated.Gossip.PingReq value) {
+        if (pingReqBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              pingReq_ != null &&
+              pingReq_ != co.willsalz.swim.generated.Gossip.PingReq.getDefaultInstance()) {
+            pingReq_ =
+              co.willsalz.swim.generated.Gossip.PingReq.newBuilder(pingReq_).mergeFrom(value).buildPartial();
+          } else {
+            pingReq_ = value;
+          }
+          onChanged();
+        } else {
+          pingReqBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .swim.PingReq handlePingReq = 4;</code>
+       */
+      public Builder clearPingReq() {
+        if (pingReqBuilder_ == null) {
+          pingReq_ = null;
+          onChanged();
+        } else {
+          pingReqBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .swim.PingReq handlePingReq = 4;</code>
+       */
+      public co.willsalz.swim.generated.Gossip.PingReq.Builder getPingReqBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getPingReqFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .swim.PingReq handlePingReq = 4;</code>
+       */
+      public co.willsalz.swim.generated.Gossip.PingReqOrBuilder getPingReqOrBuilder() {
+        if (pingReqBuilder_ != null) {
+          return pingReqBuilder_.getMessageOrBuilder();
+        } else {
+          return pingReq_ == null ?
+              co.willsalz.swim.generated.Gossip.PingReq.getDefaultInstance() : pingReq_;
+        }
+      }
+      /**
+       * <code>optional .swim.PingReq handlePingReq = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          co.willsalz.swim.generated.Gossip.PingReq, co.willsalz.swim.generated.Gossip.PingReq.Builder, co.willsalz.swim.generated.Gossip.PingReqOrBuilder> 
+          getPingReqFieldBuilder() {
+        if (pingReqBuilder_ == null) {
+          pingReqBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              co.willsalz.swim.generated.Gossip.PingReq, co.willsalz.swim.generated.Gossip.PingReq.Builder, co.willsalz.swim.generated.Gossip.PingReqOrBuilder>(
+                  getPingReq(),
+                  getParentForChildren(),
+                  isClean());
+          pingReq_ = null;
+        }
+        return pingReqBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -980,6 +1199,750 @@ public final class Gossip {
     }
 
     public co.willsalz.swim.generated.Gossip.Message getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PeerOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:swim.Peer)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string address = 1;</code>
+     */
+    boolean hasAddress();
+    /**
+     * <code>required string address = 1;</code>
+     */
+    java.lang.String getAddress();
+    /**
+     * <code>required string address = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getAddressBytes();
+
+    /**
+     * <code>required int32 port = 2;</code>
+     */
+    boolean hasPort();
+    /**
+     * <code>required int32 port = 2;</code>
+     */
+    int getPort();
+  }
+  /**
+   * Protobuf type {@code swim.Peer}
+   */
+  public  static final class Peer extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:swim.Peer)
+      PeerOrBuilder {
+    // Use Peer.newBuilder() to construct.
+    private Peer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Peer() {
+      address_ = "";
+      port_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Peer(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              address_ = bs;
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              port_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return co.willsalz.swim.generated.Gossip.internal_static_swim_Peer_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return co.willsalz.swim.generated.Gossip.internal_static_swim_Peer_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              co.willsalz.swim.generated.Gossip.Peer.class, co.willsalz.swim.generated.Gossip.Peer.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code swim.Peer.State}
+     */
+    public enum State
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>Alive = 1;</code>
+       */
+      Alive(1),
+      /**
+       * <code>Suspect = 2;</code>
+       */
+      Suspect(2),
+      /**
+       * <code>Dead = 3;</code>
+       */
+      Dead(3),
+      ;
+
+      /**
+       * <code>Alive = 1;</code>
+       */
+      public static final int Alive_VALUE = 1;
+      /**
+       * <code>Suspect = 2;</code>
+       */
+      public static final int Suspect_VALUE = 2;
+      /**
+       * <code>Dead = 3;</code>
+       */
+      public static final int Dead_VALUE = 3;
+
+
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static State valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static State forNumber(int value) {
+        switch (value) {
+          case 1: return Alive;
+          case 2: return Suspect;
+          case 3: return Dead;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<State>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          State> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<State>() {
+              public State findValueByNumber(int number) {
+                return State.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return co.willsalz.swim.generated.Gossip.Peer.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final State[] VALUES = values();
+
+      public static State valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private State(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:swim.Peer.State)
+    }
+
+    private int bitField0_;
+    public static final int ADDRESS_FIELD_NUMBER = 1;
+    private volatile java.lang.Object address_;
+    /**
+     * <code>required string address = 1;</code>
+     */
+    public boolean hasAddress() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string address = 1;</code>
+     */
+    public java.lang.String getAddress() {
+      java.lang.Object ref = address_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          address_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string address = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getAddressBytes() {
+      java.lang.Object ref = address_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        address_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PORT_FIELD_NUMBER = 2;
+    private int port_;
+    /**
+     * <code>required int32 port = 2;</code>
+     */
+    public boolean hasPort() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 port = 2;</code>
+     */
+    public int getPort() {
+      return port_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasAddress()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPort()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, address_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, port_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, address_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, port_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof co.willsalz.swim.generated.Gossip.Peer)) {
+        return super.equals(obj);
+      }
+      co.willsalz.swim.generated.Gossip.Peer other = (co.willsalz.swim.generated.Gossip.Peer) obj;
+
+      boolean result = true;
+      result = result && (hasAddress() == other.hasAddress());
+      if (hasAddress()) {
+        result = result && getAddress()
+            .equals(other.getAddress());
+      }
+      result = result && (hasPort() == other.hasPort());
+      if (hasPort()) {
+        result = result && (getPort()
+            == other.getPort());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasAddress()) {
+        hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+        hash = (53 * hash) + getAddress().hashCode();
+      }
+      if (hasPort()) {
+        hash = (37 * hash) + PORT_FIELD_NUMBER;
+        hash = (53 * hash) + getPort();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static co.willsalz.swim.generated.Gossip.Peer parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static co.willsalz.swim.generated.Gossip.Peer parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static co.willsalz.swim.generated.Gossip.Peer parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static co.willsalz.swim.generated.Gossip.Peer parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static co.willsalz.swim.generated.Gossip.Peer parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static co.willsalz.swim.generated.Gossip.Peer parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static co.willsalz.swim.generated.Gossip.Peer parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static co.willsalz.swim.generated.Gossip.Peer parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static co.willsalz.swim.generated.Gossip.Peer parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static co.willsalz.swim.generated.Gossip.Peer parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(co.willsalz.swim.generated.Gossip.Peer prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code swim.Peer}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:swim.Peer)
+        co.willsalz.swim.generated.Gossip.PeerOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return co.willsalz.swim.generated.Gossip.internal_static_swim_Peer_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return co.willsalz.swim.generated.Gossip.internal_static_swim_Peer_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                co.willsalz.swim.generated.Gossip.Peer.class, co.willsalz.swim.generated.Gossip.Peer.Builder.class);
+      }
+
+      // Construct using co.willsalz.swim.generated.Gossip.Peer.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        address_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        port_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return co.willsalz.swim.generated.Gossip.internal_static_swim_Peer_descriptor;
+      }
+
+      public co.willsalz.swim.generated.Gossip.Peer getDefaultInstanceForType() {
+        return co.willsalz.swim.generated.Gossip.Peer.getDefaultInstance();
+      }
+
+      public co.willsalz.swim.generated.Gossip.Peer build() {
+        co.willsalz.swim.generated.Gossip.Peer result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public co.willsalz.swim.generated.Gossip.Peer buildPartial() {
+        co.willsalz.swim.generated.Gossip.Peer result = new co.willsalz.swim.generated.Gossip.Peer(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.address_ = address_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.port_ = port_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof co.willsalz.swim.generated.Gossip.Peer) {
+          return mergeFrom((co.willsalz.swim.generated.Gossip.Peer)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(co.willsalz.swim.generated.Gossip.Peer other) {
+        if (other == co.willsalz.swim.generated.Gossip.Peer.getDefaultInstance()) return this;
+        if (other.hasAddress()) {
+          bitField0_ |= 0x00000001;
+          address_ = other.address_;
+          onChanged();
+        }
+        if (other.hasPort()) {
+          setPort(other.getPort());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasAddress()) {
+          return false;
+        }
+        if (!hasPort()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        co.willsalz.swim.generated.Gossip.Peer parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (co.willsalz.swim.generated.Gossip.Peer) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object address_ = "";
+      /**
+       * <code>required string address = 1;</code>
+       */
+      public boolean hasAddress() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string address = 1;</code>
+       */
+      public java.lang.String getAddress() {
+        java.lang.Object ref = address_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            address_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string address = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getAddressBytes() {
+        java.lang.Object ref = address_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          address_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string address = 1;</code>
+       */
+      public Builder setAddress(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        address_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string address = 1;</code>
+       */
+      public Builder clearAddress() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        address_ = getDefaultInstance().getAddress();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string address = 1;</code>
+       */
+      public Builder setAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        address_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int port_ ;
+      /**
+       * <code>required int32 port = 2;</code>
+       */
+      public boolean hasPort() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 port = 2;</code>
+       */
+      public int getPort() {
+        return port_;
+      }
+      /**
+       * <code>required int32 port = 2;</code>
+       */
+      public Builder setPort(int value) {
+        bitField0_ |= 0x00000002;
+        port_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 port = 2;</code>
+       */
+      public Builder clearPort() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        port_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:swim.Peer)
+    }
+
+    // @@protoc_insertion_point(class_scope:swim.Peer)
+    private static final co.willsalz.swim.generated.Gossip.Peer DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new co.willsalz.swim.generated.Gossip.Peer();
+    }
+
+    public static co.willsalz.swim.generated.Gossip.Peer getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Peer>
+        PARSER = new com.google.protobuf.AbstractParser<Peer>() {
+      public Peer parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Peer(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Peer> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Peer> getParserForType() {
+      return PARSER;
+    }
+
+    public co.willsalz.swim.generated.Gossip.Peer getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1361,6 +2324,19 @@ public final class Gossip {
   public interface PingReqOrBuilder extends
       // @@protoc_insertion_point(interface_extends:swim.PingReq)
       com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required .swim.Peer target = 1;</code>
+     */
+    boolean hasTarget();
+    /**
+     * <code>required .swim.Peer target = 1;</code>
+     */
+    co.willsalz.swim.generated.Gossip.Peer getTarget();
+    /**
+     * <code>required .swim.Peer target = 1;</code>
+     */
+    co.willsalz.swim.generated.Gossip.PeerOrBuilder getTargetOrBuilder();
   }
   /**
    * Protobuf type {@code swim.PingReq}
@@ -1386,6 +2362,7 @@ public final class Gossip {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -1401,6 +2378,19 @@ public final class Gossip {
                                      extensionRegistry, tag)) {
                 done = true;
               }
+              break;
+            }
+            case 10: {
+              co.willsalz.swim.generated.Gossip.Peer.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = target_.toBuilder();
+              }
+              target_ = input.readMessage(co.willsalz.swim.generated.Gossip.Peer.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(target_);
+                target_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
               break;
             }
           }
@@ -1427,18 +2417,51 @@ public final class Gossip {
               co.willsalz.swim.generated.Gossip.PingReq.class, co.willsalz.swim.generated.Gossip.PingReq.Builder.class);
     }
 
+    private int bitField0_;
+    public static final int TARGET_FIELD_NUMBER = 1;
+    private co.willsalz.swim.generated.Gossip.Peer target_;
+    /**
+     * <code>required .swim.Peer target = 1;</code>
+     */
+    public boolean hasTarget() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .swim.Peer target = 1;</code>
+     */
+    public co.willsalz.swim.generated.Gossip.Peer getTarget() {
+      return target_ == null ? co.willsalz.swim.generated.Gossip.Peer.getDefaultInstance() : target_;
+    }
+    /**
+     * <code>required .swim.Peer target = 1;</code>
+     */
+    public co.willsalz.swim.generated.Gossip.PeerOrBuilder getTargetOrBuilder() {
+      return target_ == null ? co.willsalz.swim.generated.Gossip.Peer.getDefaultInstance() : target_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasTarget()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getTarget().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, getTarget());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1447,6 +2470,10 @@ public final class Gossip {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getTarget());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1464,6 +2491,11 @@ public final class Gossip {
       co.willsalz.swim.generated.Gossip.PingReq other = (co.willsalz.swim.generated.Gossip.PingReq) obj;
 
       boolean result = true;
+      result = result && (hasTarget() == other.hasTarget());
+      if (hasTarget()) {
+        result = result && getTarget()
+            .equals(other.getTarget());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -1475,6 +2507,10 @@ public final class Gossip {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasTarget()) {
+        hash = (37 * hash) + TARGET_FIELD_NUMBER;
+        hash = (53 * hash) + getTarget().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1589,10 +2625,17 @@ public final class Gossip {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getTargetFieldBuilder();
         }
       }
       public Builder clear() {
         super.clear();
+        if (targetBuilder_ == null) {
+          target_ = null;
+        } else {
+          targetBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -1615,6 +2658,17 @@ public final class Gossip {
 
       public co.willsalz.swim.generated.Gossip.PingReq buildPartial() {
         co.willsalz.swim.generated.Gossip.PingReq result = new co.willsalz.swim.generated.Gossip.PingReq(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (targetBuilder_ == null) {
+          result.target_ = target_;
+        } else {
+          result.target_ = targetBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1656,12 +2710,21 @@ public final class Gossip {
 
       public Builder mergeFrom(co.willsalz.swim.generated.Gossip.PingReq other) {
         if (other == co.willsalz.swim.generated.Gossip.PingReq.getDefaultInstance()) return this;
+        if (other.hasTarget()) {
+          mergeTarget(other.getTarget());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
       public final boolean isInitialized() {
+        if (!hasTarget()) {
+          return false;
+        }
+        if (!getTarget().isInitialized()) {
+          return false;
+        }
         return true;
       }
 
@@ -1681,6 +2744,125 @@ public final class Gossip {
           }
         }
         return this;
+      }
+      private int bitField0_;
+
+      private co.willsalz.swim.generated.Gossip.Peer target_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          co.willsalz.swim.generated.Gossip.Peer, co.willsalz.swim.generated.Gossip.Peer.Builder, co.willsalz.swim.generated.Gossip.PeerOrBuilder> targetBuilder_;
+      /**
+       * <code>required .swim.Peer target = 1;</code>
+       */
+      public boolean hasTarget() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .swim.Peer target = 1;</code>
+       */
+      public co.willsalz.swim.generated.Gossip.Peer getTarget() {
+        if (targetBuilder_ == null) {
+          return target_ == null ? co.willsalz.swim.generated.Gossip.Peer.getDefaultInstance() : target_;
+        } else {
+          return targetBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .swim.Peer target = 1;</code>
+       */
+      public Builder setTarget(co.willsalz.swim.generated.Gossip.Peer value) {
+        if (targetBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          target_ = value;
+          onChanged();
+        } else {
+          targetBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .swim.Peer target = 1;</code>
+       */
+      public Builder setTarget(
+          co.willsalz.swim.generated.Gossip.Peer.Builder builderForValue) {
+        if (targetBuilder_ == null) {
+          target_ = builderForValue.build();
+          onChanged();
+        } else {
+          targetBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .swim.Peer target = 1;</code>
+       */
+      public Builder mergeTarget(co.willsalz.swim.generated.Gossip.Peer value) {
+        if (targetBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              target_ != null &&
+              target_ != co.willsalz.swim.generated.Gossip.Peer.getDefaultInstance()) {
+            target_ =
+              co.willsalz.swim.generated.Gossip.Peer.newBuilder(target_).mergeFrom(value).buildPartial();
+          } else {
+            target_ = value;
+          }
+          onChanged();
+        } else {
+          targetBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .swim.Peer target = 1;</code>
+       */
+      public Builder clearTarget() {
+        if (targetBuilder_ == null) {
+          target_ = null;
+          onChanged();
+        } else {
+          targetBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .swim.Peer target = 1;</code>
+       */
+      public co.willsalz.swim.generated.Gossip.Peer.Builder getTargetBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getTargetFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .swim.Peer target = 1;</code>
+       */
+      public co.willsalz.swim.generated.Gossip.PeerOrBuilder getTargetOrBuilder() {
+        if (targetBuilder_ != null) {
+          return targetBuilder_.getMessageOrBuilder();
+        } else {
+          return target_ == null ?
+              co.willsalz.swim.generated.Gossip.Peer.getDefaultInstance() : target_;
+        }
+      }
+      /**
+       * <code>required .swim.Peer target = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          co.willsalz.swim.generated.Gossip.Peer, co.willsalz.swim.generated.Gossip.Peer.Builder, co.willsalz.swim.generated.Gossip.PeerOrBuilder> 
+          getTargetFieldBuilder() {
+        if (targetBuilder_ == null) {
+          targetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              co.willsalz.swim.generated.Gossip.Peer, co.willsalz.swim.generated.Gossip.Peer.Builder, co.willsalz.swim.generated.Gossip.PeerOrBuilder>(
+                  getTarget(),
+                  getParentForChildren(),
+                  isClean());
+          target_ = null;
+        }
+        return targetBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2110,6 +3292,11 @@ public final class Gossip {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_swim_Message_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_swim_Peer_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_swim_Peer_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_swim_Ping_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -2133,12 +3320,16 @@ public final class Gossip {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\033src/main/proto/gossip.proto\022\004swim\"x\n\007M" +
-      "essage\022 \n\004type\030\001 \002(\0162\022.swim.Message.Type" +
-      "\022\030\n\004ping\030\002 \001(\0132\n.swim.Ping\022\026\n\003ack\030\003 \001(\0132" +
-      "\t.swim.Ack\"\031\n\004Type\022\010\n\004PING\020\001\022\007\n\003ACK\020\002\"\006\n" +
-      "\004Ping\"\t\n\007PingReq\"\005\n\003AckB&\n\032co.willsalz.s" +
-      "wim.generatedB\006GossipH\001"
+      "\n\033src/main/proto/gossip.proto\022\004swim\"\246\001\n\007" +
+      "Message\022 \n\004type\030\001 \002(\0162\022.swim.Message.Typ" +
+      "e\022\030\n\004ping\030\002 \001(\0132\n.swim.Ping\022\026\n\003ack\030\003 \001(\013" +
+      "2\t.swim.Ack\022\036\n\007pingReq\030\004 \001(\0132\r.swim.Ping" +
+      "Req\"\'\n\004Type\022\010\n\004PING\020\001\022\007\n\003ACK\020\002\022\014\n\010PING_R" +
+      "EQ\020\003\"P\n\004Peer\022\017\n\007address\030\001 \002(\t\022\014\n\004port\030\002 " +
+      "\002(\005\")\n\005State\022\t\n\005Alive\020\001\022\013\n\007Suspect\020\002\022\010\n\004" +
+      "Dead\020\003\"\006\n\004Ping\"%\n\007PingReq\022\032\n\006target\030\001 \002(" +
+      "\0132\n.swim.Peer\"\005\n\003AckB&\n\032co.willsalz.swim" +
+      ".generatedB\006GossipH\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2157,21 +3348,27 @@ public final class Gossip {
     internal_static_swim_Message_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_swim_Message_descriptor,
-        new java.lang.String[] { "Type", "Ping", "Ack", });
-    internal_static_swim_Ping_descriptor =
+        new java.lang.String[] { "Type", "Ping", "Ack", "PingReq", });
+    internal_static_swim_Peer_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_swim_Peer_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_swim_Peer_descriptor,
+        new java.lang.String[] { "Address", "Port", });
+    internal_static_swim_Ping_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_swim_Ping_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_swim_Ping_descriptor,
         new java.lang.String[] { });
     internal_static_swim_PingReq_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_swim_PingReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_swim_PingReq_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "Target", });
     internal_static_swim_Ack_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_swim_Ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_swim_Ack_descriptor,
